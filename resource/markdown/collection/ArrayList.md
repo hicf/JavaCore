@@ -11,7 +11,7 @@
 > ![ArrayList继承关系](https://upload-images.jianshu.io/upload_images/11476758-6749a7cf5848ce66.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 #####  重要的属性
-```
+```java
 // 存放数据的数组，数组的每个位置并不一定都填充数据，用transient修饰避免避免序列化、避免浪费资源
 transient Object[] elementData;
 // 记录着ArrayList的修改次数,也就每次add或remove，它的值都会加1
@@ -19,7 +19,7 @@ protected transient int modCount = 0;
 ```
 
 ##### 1.1 一般添加元素的方法 public boolean `add(E e)`
-```
+```java
 public boolean add(E e) {
     // modCount++，并且校验容量，不够用就扩容
     ensureCapacityInternal(size + 1);  // 增加 modCount
@@ -47,7 +47,7 @@ private void ensureExplicitCapacity(int minCapacity) {
 
 ```
 *  `本文重点方法★★★★★` ArrayList 扩容方法 grow(int minCapacity)
-```
+```java
 // 扩容方法
 private void grow(int minCapacity) {
     // overflow-conscious code
@@ -64,7 +64,7 @@ private void grow(int minCapacity) {
 ```
 
 ##### 1.2 在指定位子添加方法 public void `add(int index, E element)`
-```
+```java
 public void add(int index, E element) {
     // 只要有index，必定会检查range
     rangeCheckForAdd(index);
@@ -81,7 +81,7 @@ public void add(int index, E element) {
 ```
 
 ##### 2.1  删除元素 public boolean `remove(Object o)`
-```
+```java
 public boolean remove(Object o) {
     // 两种情况，被删除的元素是否为 null
     // for 循环遍历、判断、删除（请注意：千万不要使用 foreach 进行删除！！！）
@@ -120,7 +120,7 @@ private void fastRemove(int index) {
 ```
 
 ##### 3、重新设置指定index位置的元素值 public E `set(int index, E element)`
-```
+```java
 public E set(int index, E element) {
     // 有index，必检查
     rangeCheck(index);
@@ -133,7 +133,7 @@ public E set(int index, E element) {
 ```
 
 ##### 4、获取指定index位置的元素 public E `get(int index)` 
-```
+```java
 public E get(int index) {
    // 还是那句话，凡是遇到index索引，必检查
     rangeCheck(index);
@@ -148,7 +148,7 @@ E elementData(int index) {
 ```
 
 ##### 5、判断元素是否存储 public boolean `contains(Object o)` 判断是否存在某个元素
-```
+```java
 public boolean contains(Object o) {
     // 简单粗暴，直接遍历查看index是否大于0
     return indexOf(o) >= 0;
