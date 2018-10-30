@@ -1,24 +1,28 @@
 
-##### 本文关注点：
-* **ArrayList**
-* **Vector** 和 **Stack**
-* `★★★★★`本文重点：ArrayList自动扩容机制（**1.5倍或1.5倍-1** 扩容）
+### 本文关注点：
+#### **ArrayList**
+#### **Vector** 和 **Stack**
+#### `★★★★★`本文重点：ArrayList自动扩容机制（**1.5倍或1.5倍-1** 扩容）
 
 ***
-#### 一、 ArrayList
+### 一、ArrayList
 > ArrayList是动态数组，其动态性体现在能够`动态扩容、缩容`。（其原理是构建一个新Object数组，将原数组复制进去。借助 `Arrays.copyOf(T[] original, int newLength)）` 。
 
 > ![ArrayList继承关系](https://upload-images.jianshu.io/upload_images/11476758-6749a7cf5848ce66.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-#####  重要的属性
+####  重要的属性
 ```java
-// 存放数据的数组，数组的每个位置并不一定都填充数据，用transient修饰避免避免序列化、避免浪费资源
+// 默认初始容量为 10（当ArrayList的容量低于9时才会用到）
+private static final int DEFAULT_CAPACITY = 10;
+// 存放数据的数组，数组的每个位置并不一定都填充数据，用transient修饰避免序列化、避免浪费资源
 transient Object[] elementData;
+// 记录实际存放的元素个数
+private int size;
 // 记录着ArrayList的修改次数,也就每次add或remove，它的值都会加1
 protected transient int modCount = 0;
 ```
 
-##### 1.1 一般添加元素的方法 public boolean `add(E e)`
+#### 1.1、一般添加元素的方法 public boolean `add(E e)`
 ```java
 public boolean add(E e) {
     // modCount++，并且校验容量，不够用就扩容
@@ -39,14 +43,13 @@ private void ensureCapacityInternal(int minCapacity) {
 
 private void ensureExplicitCapacity(int minCapacity) {
     modCount++;
-
     // 下标溢出表示容量不够用
     if (minCapacity - elementData.length > 0)
         grow(minCapacity);
 }
 
 ```
-*  `本文重点方法★★★★★` ArrayList 扩容方法 grow(int minCapacity)
+#### `本文重点方法★★★★★` ArrayList 扩容方法 grow(int minCapacity)
 ```java
 // 扩容方法
 private void grow(int minCapacity) {
@@ -63,7 +66,7 @@ private void grow(int minCapacity) {
 }
 ```
 
-##### 1.2 在指定位子添加方法 public void `add(int index, E element)`
+#### 1.2、在指定位子添加方法 public void `add(int index, E element)`
 ```java
 public void add(int index, E element) {
     // 只要有index，必定会检查range
@@ -80,7 +83,7 @@ public void add(int index, E element) {
 }
 ```
 
-##### 2.1  删除元素 public boolean `remove(Object o)`
+#### 2.1、删除元素 public boolean `remove(Object o)`
 ```java
 public boolean remove(Object o) {
     // 两种情况，被删除的元素是否为 null
@@ -119,7 +122,7 @@ private void fastRemove(int index) {
 }
 ```
 
-##### 3、重新设置指定index位置的元素值 public E `set(int index, E element)`
+#### 3、重新设置指定index位置的元素值 public E `set(int index, E element)`
 ```java
 public E set(int index, E element) {
     // 有index，必检查
@@ -132,7 +135,7 @@ public E set(int index, E element) {
 }
 ```
 
-##### 4、获取指定index位置的元素 public E `get(int index)` 
+#### 4、获取指定index位置的元素 public E `get(int index)` 
 ```java
 public E get(int index) {
    // 还是那句话，凡是遇到index索引，必检查
@@ -147,7 +150,7 @@ E elementData(int index) {
 }
 ```
 
-##### 5、判断元素是否存储 public boolean `contains(Object o)` 判断是否存在某个元素
+#### 5、判断元素是否存储 public boolean `contains(Object o)` 判断是否存在某个元素
 ```java
 public boolean contains(Object o) {
     // 简单粗暴，直接遍历查看index是否大于0
@@ -172,11 +175,11 @@ public int indexOf(Object o) {
 ```
 
 ***
-#### 二、ArrayList的亲兄弟 Vector
+### 二、ArrayList的亲兄弟 Vector
 > Vector 的大部分方法是被 `synchronized` 修饰的。
 线程安全的ArrayList，几乎所有的方法都加 `synchronized` 修饰；
 
 ***
-#### 三、Stack
+### 三、Stack
 > Stack 继承至 Vector，是一个`后进先出LIFO`的队列。
 它实现了一个标准的 `后进先出LIFO` 的栈。
