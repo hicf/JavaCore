@@ -6,4 +6,4 @@
 
 
 
-![Collection集合框架图](http://pgq1yfr0p.bkt.clouddn.com/image/java/collection/JavaCollections%20Rotation.png)
+![Collection集合框架图](http://pgq1yfr0p.bkt.clouddn.com/image/java/collection/JavaCollectionsRotation.png)
