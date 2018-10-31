@@ -1,11 +1,12 @@
+<h4 style="padding-bottom:6px; padding-left:20px; color:#ffffff; background-color:#2C3E50;">本文关注点：</h4>
 
-### 本文关注点：
 #### **ArrayList**
 #### **Vector** 和 **Stack**
 #### `★★★★★`本文重点：ArrayList自动扩容机制（**1.5倍或1.5倍-1** 扩容）
 
 ***
-### 一、ArrayList
+<h3 style="padding-bottom:6px; padding-left:20px; color:#ffffff; background-color:#E74C3C;">一、ArrayList</h3>
+
 > ArrayList是动态数组，其动态性体现在能够`动态扩容、缩容`。（其原理是构建一个新Object数组，将原数组复制进去。借助 `Arrays.copyOf(T[] original, int newLength)）` 。
 
 > ![ArrayList继承关系](https://upload-images.jianshu.io/upload_images/11476758-6749a7cf5848ce66.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
@@ -175,11 +176,13 @@ public int indexOf(Object o) {
 ```
 
 ***
-### 二、ArrayList的亲兄弟 Vector
+<h3 style="padding-bottom:6px; padding-left:20px; color:#ffffff; background-color:#E74C3C;">二、ArrayList的亲兄弟 Vector</h3>
+
 > Vector 的大部分方法是被 `synchronized` 修饰的。
 线程安全的ArrayList，几乎所有的方法都加 `synchronized` 修饰；
 
 ***
-### 三、Stack
+<h3 style="padding-bottom:6px; padding-left:20px; color:#ffffff; background-color:#E74C3C;">三、Stack</h3>
+
 > Stack 继承至 Vector，是一个`后进先出LIFO`的队列。
 它实现了一个标准的 `后进先出LIFO` 的栈。

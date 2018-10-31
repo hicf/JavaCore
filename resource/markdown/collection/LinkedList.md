@@ -2,15 +2,15 @@
 
 > 源码分析基于 `jdk-11.0.1`
 
-### 本文重点
+<h3 style="padding-bottom:6px; padding-left:20px; color:#ffffff; background-color:#E74C3C;">本文重点</h3>
 
-#### 添加元素
+#### :heavy_plus_sign:添加元素
 
-#### 删除元素
+#### :heavy_minus_sign:删除元素
 
 ---
 
-### 一、扩展关系
+<h3 style="padding-bottom:6px; padding-left:20px; color:#ffffff; background-color:#E74C3C;">一、扩展关系</h3>
 
 ```java
 public class LinkedList<E>
@@ -22,7 +22,7 @@ public class LinkedList<E>
 
 
 
-### 二、源码分析
+<h3 style="padding-bottom:6px; padding-left:20px; color:#ffffff; background-color:#E74C3C;">二、源码分析</h3>
 
 #### 重点属性
 
@@ -90,9 +90,8 @@ void linkLast(E e) {
 
 添加元素到头部，操作于此类似。
 
-
-
-#### 重点★★★★★ 添加元素到指定index位置
+:star::star::star::star::star:
+<h4 style="padding-bottom:6px; color:#E74C3C;">重点：添加元素到指定index位置</h4>
 
 ```java
 public void add(int index, E element) {
@@ -173,7 +172,10 @@ void linkBefore(E e, Node<E> succ) {
 
 ![链入元素](http://pgq1yfr0p.bkt.clouddn.com/image/java/collection/LinkedList4.png)
 
-#### 2.2 删除元素
+
+
+:star::star::star::star::star:
+<h4 style="padding-bottom:6px; color:#E74C3C;">重点：2.2 删除元素</h4>
 
 ```java
 public boolean remove(Object o) {
