@@ -3,17 +3,16 @@
 > **Java核心知识库**:school_satchel:：包含集合框架、JVM机制、多线程、SSM框架、MySQL、分布式、微服务、高并发与高可用等。:bookmark:
 
 ### 一、:bullettrain_side::railway_car::railway_car::railway_car:集合框架源码分析![Progress](http://progressed.io/bar/26)
-* [1. 集合框架 （第 01 篇） 精尽源码分析：Collection<E> 框架总览](https://github.com/about-cloud/JavaCore/blob/dev/resource/markdown/collection/JavaCollections.md)
-* [2. 集合框架 （第 02 篇） 精尽源码分析：Map<K,V > 框架总览](https://github.com/about-cloud/JavaCore/blob/dev/resource/markdown/collection/JavaMaps.md)
-* [3. 集合框架 （第 03 篇） 精尽源码分析：ArrayList](https://github.com/about-cloud/JavaCore/blob/dev/resource/markdown/collection/ArrayList.md)
-* [4. 集合框架 （第 04 篇） 精尽源码分析：LinkedList](https://github.com/about-cloud/JavaCore/blob/dev/resource/markdown/collection/LinkedList.md)
-* 5. 集合框架 （第 04 篇） 精尽源码分析：Map<K, V>接口与其内部接口Entry<K,V>
-
-* [5. 集合框架 （第 05 篇） 精尽源码分析：jdk1.7版 HashMap](https://github.com/about-cloud/JavaCore/blob/dev/resource/markdown/collection/HashMap1.7v.md)
-* 6. 集合框架 （第 06 篇） 精尽源码分析：jdk1.7版 ConcurrentHashMap
-* 7. 集合框架 （第 07 篇） 精尽源码分析：二叉树、平衡二叉树、二叉查找树、AVL树、红黑树 概念
-* 8. 集合框架 （第 08 篇） 精尽源码分析：jdk1.8版 HashMap
-* 9. 集合框架 （第 09 篇） 精尽源码分析：jdk1.8版 ConcurrentHashMap
+* 1.[集合框架 （第 01 篇） 精尽源码分析：Collection<E> 框架总览](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/collection/JavaCollections.md)
+* 2.[集合框架 （第 02 篇） 精尽源码分析：Map<K,V > 框架总览](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/collection/JavaMaps.md)
+* 3.[集合框架 （第 03 篇） 精尽源码分析：ArrayList](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/collection/ArrayList.md)
+* 4.[集合框架 （第 04 篇） 精尽源码分析：LinkedList](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/collection/LinkedList.md)
+* 5.[集合框架 （第 05 篇） 精尽源码分析：Map<K, V>接口与其内部接口Entry<K,V>](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/collection/Map.Entry1.7v.md)
+* 6.[集合框架 （第 06 篇） 精尽源码分析：jdk1.7版 HashMap](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/collection/HashMap1.7v.md)
+* 7.集合框架 （第 07 篇） 精尽源码分析：jdk1.7版 ConcurrentHashMap
+* 8.集合框架 （第 08 篇） 精尽源码分析：二叉树、平衡二叉树、二叉查找树、AVL树、红黑树 概念
+* 9.集合框架 （第 09 篇） 精尽源码分析：jdk1.8版 HashMap
+* 10.集合框架 （第 10 篇） 精尽源码分析：jdk1.8版 ConcurrentHashMap
 * 10. 集合框架 （第 10 篇） 精尽源码分析：LinkedHashMap
 * 11. 集合框架 （第 11 篇） 精尽源码分析：TreeMap
 * 12. 集合框架 （第 12 篇） 精尽源码分析：Set<E> 集合
