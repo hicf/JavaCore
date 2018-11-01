@@ -1,8 +1,8 @@
 ![这里随便写文字](http://pgq1yfr0p.bkt.clouddn.com/image/logo/1001.jpg)
 
-> **Java核心知识库**：包含集合框架、JVM机制、多线程、SSM框架、MySQL、分布式、微服务、高并发与高可用等。
+> **Java核心知识库**:school_satchel:：包含集合框架、JVM机制、多线程、SSM框架、MySQL、分布式、微服务、高并发与高可用等。:bookmark:
 
-### 一、集合框架源码分析![Progress](http://progressed.io/bar/26)
+### 一、:bullettrain_side::railway_car::railway_car::railway_car:集合框架源码分析![Progress](http://progressed.io/bar/26)
 * [1. 集合框架 （第 01 篇） 精尽源码分析：Collection<E> 框架总览](https://github.com/about-cloud/JavaCore/blob/dev/resource/markdown/collection/JavaCollections.md)
 * [2. 集合框架 （第 02 篇） 精尽源码分析：Map<K,V > 框架总览](https://github.com/about-cloud/JavaCore/blob/dev/resource/markdown/collection/JavaMaps.md)
 * [3. 集合框架 （第 03 篇） 精尽源码分析：ArrayList](https://github.com/about-cloud/JavaCore/blob/dev/resource/markdown/collection/ArrayList.md)
@@ -22,7 +22,7 @@
 * 15. 集合框架 （第 15 篇） 精尽源码分析：其他集合
 
 
-### 二、JVM（Java虚拟机）![Progress](http://progressed.io/bar/0)
+### 二、:radio::radio::radio:JVM（Java虚拟机）![Progress](http://progressed.io/bar/0)
 * 1. Java虚拟机 （第 01 篇） 深入理解：JVM内存区域（运行时数据区）
 * 2. Java虚拟机 （第 02 篇） 深入理解：堆内存
 * 3. Java虚拟机 （第 03 篇） 深入理解：垃圾收集算法
@@ -37,7 +37,7 @@
 * 12. Java虚拟机 （第 12 篇） 深入理解：OSGi与Tomcat类加载机制
 
 
-### 三、Java多线程与并发框架![Progress](http://progressed.io/bar/0)   
+### 三、:closed_lock_with_key:Java多线程与并发框架:unlock:![Progress](http://progressed.io/bar/0)   
 * 1. Java多线程与并发框 （第 01 篇） 深入理解：线程的状态
 * 2. Java多线程与并发框 （第 02 篇） 深入理解：Java内存模型
 * 3. Java多线程与并发框 （第 03 篇） 深入理解：Java内存模型的三大特性 -- 原子性、可见性、有序性
@@ -57,7 +57,7 @@
 * 17. Java多线程与并发框 （第 16 篇) 深入理解：ThreadLocal
 
 
-### 四、网络协议 ![Progress](http://progressed.io/bar/0)
+### 四、:satellite::satellite::satellite:网络协议:globe_with_meridians::globe_with_meridians::globe_with_meridians:![Progress](http://progressed.io/bar/0)
 * 1. 网络协议 （第 01 篇） 精讲：被淘汰的ISO的OSI七层网络模型
 * 2. 网络协议 （第 01 篇） 精讲：盛行的TPC/IP 四层网络模型
 * 3. 网络协议 （第 01 篇） 精讲：HTTP1.1、HTTP2.0、HTTPS的区别
@@ -68,7 +68,7 @@
 * 8. 网络协议 （第 01 篇） 精讲：一位用户从浏览器地址框输入url、按下回车键后，经历了什么
 
 
-### 五、Spring 5.x 核心篇 ![Progress](http://progressed.io/bar/0)
+### 五、:leaves::four_leaf_clover::fountain:Spring 5.x 核心篇 ![Progress](http://progressed.io/bar/0)
 * 1. Spring 5.x （第 01 篇） 核心篇：反射机制
 * 2. Spring 5.x （第 01 篇） 核心篇：jdk动态代理与CGLib
 * 3. Spring 5.x （第 01 篇） 核心篇：请叫我IoC容器
@@ -82,7 +82,7 @@
 * 7. Spring 5.x （第 01 篇） 核心篇：Spring解决线程安全问题
 
 
-### 六、MyBatis3 精尽源码分析 ![Progress](http://progressed.io/bar/0)
+### 六、:bird::bird::bird:MyBatis3 精尽源码分析 ![Progress](http://progressed.io/bar/0)
 * 1. MyBatis3 （第 01 篇）精尽源码分析：SqlSession
 * 2. MyBatis3 （第 01 篇）精尽源码分析：SqlSessionFactory
 * 3. MyBatis3 （第 01 篇）精尽源码分析：SqlSessionManager
@@ -94,7 +94,7 @@
 * 8. MyBatis3 （第 01 篇）精尽源码分析：一级缓存和二级缓存
 
 
-### 七、SpringBoot2.x 精尽源码分析 ![Progress](http://progressed.io/bar/0)
+### 七、:battery::zap::electric_plug:SpringBoot2.x 精尽源码分析 ![Progress](http://progressed.io/bar/0)
 * 1. SpringBoot2.x （第 01 篇）精尽源码分析：SpringBoot是什么？
 * 2. SpringBoot2.x （第 06 篇）精尽源码分析：@SpringBootApplication 注解
 * 3. SpringBoot2.x （第 07 篇）精尽源码分析：SpringApplication 启动过程
@@ -106,7 +106,7 @@
 * 9. 
 
 
-### 八、MySQL ![Progress](http://progressed.io/bar/0)
+### 八、:closed_book::green_book::blue_book::notebook_with_decorative_cover::books:MySQL ![Progress](http://progressed.io/bar/0)
 * 1. 数据库 （第 01 篇）精讲： 三大范式、四大特性、四种隔离级别、五大约束
 * 2. 数据库 （第 01 篇）精讲： MySQL InnoDB 索引
 * 3. 数据库 （第 01 篇）精讲： MySQL锁机制
@@ -115,7 +115,7 @@
 * 6. 数据库 （第 01 篇）精讲： 数据库拆分
 
 
-### 九、分布式系统 ![Progress](http://progressed.io/bar/0)
+### 九、:telescope::tokyo_tower::satellite:分布式系统 ![Progress](http://progressed.io/bar/0)
 * 1. 分布式系统 （第 01 篇） 精讲：什么是分布式、微服务和集群？
 * 2. 分布式系统 （第 01 篇） 精讲：拜占庭将军问题
 * 3. 分布式系统 （第 01 篇） 精讲：Paxos算法（最难的强一致性算法）
@@ -133,7 +133,7 @@
 
 
 
-### 十、微服务![Progress](http://progressed.io/bar/0)
+### 十、:microscope::microscope::microscope:微服务![Progress](http://progressed.io/bar/0)
 
 * 1. 微服务 （第 01 篇） 精讲：什么是微服务？
 * 2. 微服务 （第 01 篇） 精讲：服务建模
@@ -147,7 +147,7 @@
 
 
 
-### 十一、高并发与高可用 ![Progress](http://progressed.io/bar/0)
+### 十一、:bicyclist::horse_racing::snowboarder:高并发与高可用 ![Progress](http://progressed.io/bar/0)
 
 - 1. 高并发与高可用 （第 01 篇） 精讲：全局id生成算法
 - 2. 高并发与高可用 （第 01 篇） 精讲：如何实现请求幂等性
@@ -159,7 +159,7 @@
 
 
 
-### 联系作者：
+### 联系作者:flags:：
 
 > :postbox:aboutcloud@163.com
 >
