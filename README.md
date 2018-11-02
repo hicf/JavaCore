@@ -8,7 +8,8 @@
 * 3.[集合框架 （第 03 篇） 精尽源码分析：ArrayList](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/collection/ArrayList.md)
 * 4.[集合框架 （第 04 篇） 精尽源码分析：LinkedList](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/collection/LinkedList.md)
 * 5.[集合框架 （第 05 篇） 精尽源码分析：Map<K, V>接口与其内部接口Entry<K,V>](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/collection/Map.Entry1.7v.md)
-* 6.[集合框架 （第 06 篇） 精尽源码分析：jdk1.7版 HashMap](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/collection/HashMap1.7v.md)
+* 6.[集合框架 （第 07 篇） 精尽源码分析：哈希冲突(哈希碰撞)与解决算法](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/collection/HashConflictsAndResolve.md)
+* 7.[集合框架 （第 06 篇） 精尽源码分析：jdk1.7版 HashMap](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/collection/HashMap1.7v.md)
 * 7.集合框架 （第 07 篇） 精尽源码分析：jdk1.7版 ConcurrentHashMap
 * 8.集合框架 （第 08 篇） 精尽源码分析：二叉树、平衡二叉树、二叉查找树、AVL树、红黑树 概念
 * 9.集合框架 （第 09 篇） 精尽源码分析：jdk1.8版 HashMap
