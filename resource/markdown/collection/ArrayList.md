@@ -11,7 +11,7 @@
 
 > ![ArrayList继承关系](https://upload-images.jianshu.io/upload_images/11476758-6749a7cf5848ce66.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-####  重要的属性
+####  重要的属性:ledger:
 ```java
 // 默认初始容量为 10（当ArrayList的容量低于9时才会用到）
 private static final int DEFAULT_CAPACITY = 10;
@@ -67,7 +67,10 @@ private void grow(int minCapacity) {
 }
 ```
 
+:bomb::bomb::bomb:虽然上面的代码不多，但是添加元素遇到经常扩容的现象要格外留心，因为频繁的扩容势必带来频繁的数组拷贝，这会大大牺牲性能，所以有必要在 `ArrayList` 初始化时指定容量。初始化的容量也不要太大于实际存储容量，不然会造成空间浪费，所以都要权衡利弊。
+
 #### 1.2、在指定位子添加方法 public void `add(int index, E element)`
+
 ```java
 public void add(int index, E element) {
     // 只要有index，必定会检查range
