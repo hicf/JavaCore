@@ -10,8 +10,8 @@
 * [5.集合框架 （第 05 篇） 精尽源码分析：Map<K, V>接口与其内部接口Entry<K,V>](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/collection/Map.Entry1.7v.md)
 * [6.集合框架 （第 06 篇） 精尽源码分析：哈希冲突(哈希碰撞)与解决算法](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/collection/HashConflictsAndResolve.md)
 * [7.集合框架 （第 07 篇） 精尽源码分析：jdk1.7版 HashMap](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/collection/HashMap1.7v.md)
-* 8. 集合框架 （第 08 篇） 精尽源码分析：HashMap、Hashtable、ConcurrentHashMap之间的区别
-* [8.集合框架 （第 08 篇） 精尽源码分析：jdk1.7版 ConcurrentHashMap](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/collection/ConcurrentHashMap1.7v.md)
+* [8. 集合框架 （第 08 篇） 精尽源码分析：HashMap、Hashtable、ConcurrentHashMap之间的区别](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/collection/HashMapHashtableConcurrentHashMap.md)
+* [9.集合框架 （第 09 篇） 精尽源码分析：jdk1.7版 ConcurrentHashMap](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/collection/ConcurrentHashMap1.7v.md)
 * 8.集合框架 （第 08 篇） 精尽源码分析：二叉树、平衡二叉树、二叉查找树、AVL树、红黑树 概念
 * 9.集合框架 （第 09 篇） 精尽源码分析：jdk1.8版 HashMap
 * 10.集合框架 （第 10 篇） 精尽源码分析：jdk1.8版 ConcurrentHashMap
