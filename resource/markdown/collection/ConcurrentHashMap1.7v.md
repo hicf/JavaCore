@@ -142,117 +142,7 @@ static final class Segment<K,V> extends ReentrantLock implements Serializable {
         this.threshold = threshold;
         this.table = tab;
     }
-
-    final V put(K key, int hash, V value, boolean onlyIfAbsent) {
-        HashEntry<K,V> node = tryLock() ? null :
-            scanAndLockForPut(key, hash, value);
-        V oldValue;
-        try {
-            HashEntry<K,V>[] tab = table;
-            int index = (tab.length - 1) & hash;
-            HashEntry<K,V> first = entryAt(tab, index);
-            for (HashEntry<K,V> e = first;;) {
-                if (e != null) {
-                    K k;
-                    if ((k = e.key) == key ||
-                        (e.hash == hash && key.equals(k))) {
-                        oldValue = e.value;
-                        if (!onlyIfAbsent) {
-                            e.value = value;
-                            ++modCount;
-                        }
-                        break;
-                    }
-                    e = e.next;
-                }
-                else {
-                    if (node != null)
-                        node.setNext(first);
-                    else
-                        node = new HashEntry<K,V>(hash, key, value, first);
-                    int c = count + 1;
-                    if (c > threshold && tab.length < MAXIMUM_CAPACITY)
-                        rehash(node);
-                    else
-                        setEntryAt(tab, index, node);
-                    ++modCount;
-                    count = c;
-                    oldValue = null;
-                    break;
-                }
-            }
-        } finally {
-            unlock();
-        }
-        return oldValue;
-    }
-
-    /**
-     * Doubles size of table and repacks entries, also adding the
-     * given node to new table
-     */
-    @SuppressWarnings("unchecked")
-    private void rehash(HashEntry<K,V> node) {
-        /*
-         * Reclassify nodes in each list to new table.  Because we
-         * are using power-of-two expansion, the elements from
-         * each bin must either stay at same index, or move with a
-         * power of two offset. We eliminate unnecessary node
-         * creation by catching cases where old nodes can be
-         * reused because their next fields won't change.
-         * Statistically, at the default threshold, only about
-         * one-sixth of them need cloning when a table
-         * doubles. The nodes they replace will be garbage
-         * collectable as soon as they are no longer referenced by
-         * any reader thread that may be in the midst of
-         * concurrently traversing table. Entry accesses use plain
-         * array indexing because they are followed by volatile
-         * table write.
-         */
-        HashEntry<K,V>[] oldTable = table;
-        int oldCapacity = oldTable.length;
-        int newCapacity = oldCapacity << 1;
-        threshold = (int)(newCapacity * loadFactor);
-        HashEntry<K,V>[] newTable =
-            (HashEntry<K,V>[]) new HashEntry[newCapacity];
-        int sizeMask = newCapacity - 1;
-        for (int i = 0; i < oldCapacity ; i++) {
-            HashEntry<K,V> e = oldTable[i];
-            if (e != null) {
-                HashEntry<K,V> next = e.next;
-                int idx = e.hash & sizeMask;
-                if (next == null)   //  Single node on list
-                    newTable[idx] = e;
-                else { // Reuse consecutive sequence at same slot
-                    HashEntry<K,V> lastRun = e;
-                    int lastIdx = idx;
-                    for (HashEntry<K,V> last = next;
-                         last != null;
-                         last = last.next) {
-                        int k = last.hash & sizeMask;
-                        if (k != lastIdx) {
-                            lastIdx = k;
-                            lastRun = last;
-                        }
-                    }
-                    newTable[lastIdx] = lastRun;
-                    // Clone remaining nodes
-                    for (HashEntry<K,V> p = e; p != lastRun; p = p.next) {
-                        V v = p.value;
-                        int h = p.hash;
-                        int k = h & sizeMask;
-                        HashEntry<K,V> n = newTable[k];
-                        newTable[k] = new HashEntry<K,V>(h, p.key, v, n);
-                    }
-                }
-            }
-        }
-        int nodeIndex = node.hash & sizeMask; // add the new node
-        node.setNext(newTable[nodeIndex]);
-        newTable[nodeIndex] = node;
-        table = newTable;
-    }
-
+...
     /**
      * Scans for a node containing given key while trying to
      * acquire lock, creating and returning one if not found. Upon
@@ -496,7 +386,7 @@ public ConcurrentHashMap() {
     }
 ```
 
-> 另一个构造方法就不讲解了
+> 另一个构造方法这里就不分析了
 
 
 
@@ -573,9 +463,11 @@ private Segment<K,V> ensureSegment(int k) {
 #### :boat::boat::boat:实际将键值对添加到集合中的方法
 
 ```java
-// 这里很像HashMap添加元素的操作(可参考往期文章：https://github.com/about-cloud/JavaCore)
+// 这里很像HashMap添加元素的操作
+// (可参考往期文章：https://github.com/about-cloud/JavaCore)
 final V put(K key, int hash, V value, boolean onlyIfAbsent) {
-    // 先尝试获取锁，如果成功获取那么返回🔙null，否则就通过扫描加锁来存放元素
+    // 先尝试获取锁，如果成功获取那么返回🔙null
+    // 如果加锁失败，那么就通过scanAndLockForPut方法扫描加锁来存放元素(详见下面👇分析)
     HashEntry<K,V> node = tryLock() ? null :
         scanAndLockForPut(key, hash, value);
     V oldValue;
@@ -584,12 +476,16 @@ final V put(K key, int hash, V value, boolean onlyIfAbsent) {
         HashEntry<K,V>[] tab = table;
         // 通过 逻辑与&🌧 计算出桶号(哈希槽位置)(请参考HashMap)
         int index = (tab.length - 1) & hash;
+        // 根据桶号获取桶顶的元素
         HashEntry<K,V> first = entryAt(tab, index);
+        // 遍历链表
         for (HashEntry<K,V> e = first;;) {
+            // 元素不为空的情况下
             if (e != null) {
                 K k;
-                if ((k = e.key) == key ||
-                    (e.hash == hash && key.equals(k))) {
+                // 通过比较 key 或者 key的哈希码和key来判断key是否相等
+                // 如果 key 相等，那么替换value
+                if ((k = e.key) == key || (e.hash == hash && key.equals(k))) {
                     oldValue = e.value;
                     if (!onlyIfAbsent) {
                         e.value = value;
@@ -597,33 +493,178 @@ final V put(K key, int hash, V value, boolean onlyIfAbsent) {
                     }
                     break;
                 }
+                // 指定的key与此元素的key不相等，那么就移到下一个元素
                 e = e.next;
             }
+            // 迭代到当前元素的为null情况
             else {
+                // 通过scanAndLockForPut得到方法放入的元素
                 if (node != null)
+                    // 使用UNSAFE.putOrderedObject方法以“下沉”的方式，
+                    // 将元素链入链表，新的元素在桶顶，旧的元素在下面
                     node.setNext(first);
+                // 如果 node == null，以为着通过tryLock()获得了锁🔐
                 else
+                    // 构造新🆕元素
                     node = new HashEntry<K,V>(hash, key, value, first);
+                // 判断新添加此元素后，是否超过容量阈值
                 int c = count + 1;
                 if (c > threshold && tab.length < MAXIMUM_CAPACITY)
+                    // 如果超过了容器的负载量，那么进行扩容
                     rehash(node);
                 else
+                    // 如果没有容量够用，那么就在指定的位置，
+                    // 间接UNSAFE.putOrderedObject方法通过添加➕元素
                     setEntryAt(tab, index, node);
                 ++modCount;
+                // 记录📝实际存放元素的大小
                 count = c;
-                oldValue = null;
+                oldValue = null; // 释放旧值的引用，让GC去处理吧
                 break;
             }
         }
     } finally {
+        // 🔚解锁
         unlock();
     }
     return oldValue;
 }
 ```
 
+#### （获取锁失败后，线程就会进入等待状态）此时通过自定义扫描、加锁的方式来存放元素
 
+```java
+private HashEntry<K,V> scanAndLockForPut(K key, int hash, V value) {
+    // 通过当前段segment和指定key的哈希码来获取元素
+    HashEntry<K,V> first = entryForHash(this, hash);
+    HashEntry<K,V> e = first;
+    HashEntry<K,V> node = null;
+    // 重试次数
+    int retries = -1;
+    // 如果加锁失败，就循环
+    while (!tryLock()) {
+        HashEntry<K,V> f; // to recheck first below
+        // 重试次数小于0表示重来都没有创建过元素
+        if (retries < 0) {
+            // 指定哈希码定位的位置存在null元素，表示此处没有元素，下面就创建元素
+            if (e == null) {
+                // 如果node再为null的化，就大胆的创建元素吧
+                if (node == null)
+                    node = new HashEntry<K,V>(hash, key, value, null);
+                // 赋值0，表示首次操作
+                retries = 0;
+            }
+            // 指定哈希码定位的位置有非空元素，那就比较key是否相同
+            else if (key.equals(e.key))
+                // 既然非空，就意味着创建过
+                retries = 0;
+            else
+                // 遍历链表中下一个元素
+                e = e.next;
+        }
+        // 当达到最大重试次数时，加锁跳出循环
+        else if (++retries > MAX_SCAN_RETRIES) {
+            lock();
+            break;
+        }
+        // 在重试次数允许范围内
+        // (retries & 1) == 0 为true，表示retries为偶数(请注意上面做了++retries操作)
+        else if ((retries & 1) == 0 &&
+                 // 为true，意味着节点被更改了
+                 (f = entryForHash(this, hash)) != first) {
+            // 节点被更改了，那就替换芯节点
+            e = first = f;
+            // 再重新开始
+            retries = -1;
+        }
+    }
+    return node;
+}
+```
 
+#### 私有的扩容方法
 
+```java
+/**
+ * table（指的是HashEntrH<K, V>[]）2倍扩容，
+ * 然后在新的table重新排放所有的元素
+ * (你看看，扩容多麻烦、又消耗性能，所以初始时一定要合理的指定初始容量)
+ * 并且将给定的节点添加到散列表
+ */
+@SuppressWarnings("unchecked")
+private void rehash(HashEntry<K,V> node) {
+    // 当前的散列表(哈希是音译，我觉得“散列”更能表达其真实含义)
+    HashEntry<K,V>[] oldTable = table;
+    // 当前散列表的长度(即容量)
+    int oldCapacity = oldTable.length;
+    // 新的容量(2倍于当前散列表的容量)
+    int newCapacity = oldCapacity << 1;
+    // 新阈值
+    threshold = (int)(newCapacity * loadFactor);
+    // 新的散列表
+    HashEntry<K,V>[] newTable =
+        (HashEntry<K,V>[]) new HashEntry[newCapacity];
+    // 掩码(数组的最大索引值)
+    int sizeMask = newCapacity - 1;
+    // 迭代数组（散列表），将当前散列表中的元素转移到新的、扩容的散列表中
+    for (int i = 0; i < oldCapacity ; i++) {
+        HashEntry<K,V> e = oldTable[i];
+        if (e != null) {
+            // 如果哈希槽处(桶顶)的元素不为空，就准备遍历这个链表
+            // 提前获取下一个节点的引用
+            HashEntry<K,V> next = e.next;
+            // 计算出该元素在新散列表中哈希槽的位置(在新数组中的索引)
+            int idx = e.hash & sizeMask;
+            // 桶顶处的下一个元素为空，意味着这是个单元素的链表，
+            // 直接将元素移到新散列表中
+            if (next == null)
+                newTable[idx] = e;
+            // 否则就意为着链表中有多个元素
+            else {
+                 // 转移链表中元素的思路，就是遍历这个链表，将元素一个一个的转移
+                HashEntry<K,V> lastRun = e; // 记录📝链表中的最后一个元素
+                int lastIdx = idx; // 记录📝链表中的最后一个元素应该落在新散列表中的索引
+                // 这里的for循环不是遍历、转移元素，而是获取链表中最后一个元素的信息
+                for (HashEntry<K,V> last = next;
+                     last != null;
+                     last = last.next) {
+                    // 计算出该元素在新散列表中哈希槽的位置(在新数组中的索引)
+                    // 直到遍历链表中的最后一个元素，那么也就获取到链表中的最后一个元素啦
+                    int k = last.hash & sizeMask;
+                    if (k != lastIdx) {
+                        lastIdx = k;
+                        lastRun = last;
+                    }
+                }
+                // 把链表中的元素转移到新链表中
+                newTable[lastIdx] = lastRun;
+                // 外层for循环的一开始已经把链表中第一个元素(桶顶的元素)转移走了，
+                // 下面就转移接续的元素
+                // 克隆剩下的元素节点
+                for (HashEntry<K,V> p = e; p != lastRun; p = p.next) {
+                    V v = p.value;
+                    int h = p.hash;
+                    int k = h & sizeMask;
+                    HashEntry<K,V> n = newTable[k];
+                    // 从外面看，这里是深复制(上面这个链表中的最后一个节点是浅复制)
+                    newTable[k] = new HashEntry<K,V>(h, p.key, v, n);
+                }
+            }
+        }
+    }
+    
+    // 扩容的也扩容了，所有的元素也都转移了
+    // 这才开始添加用户要添加的新节点
+    int nodeIndex = node.hash & sizeMask;
+    // 借助UNSAFE.putOrderedObject方法来实现节点的添加
+    node.setNext(newTable[nodeIndex]);
+    newTable[nodeIndex] = node;
+    table = newTable;
+}
+```
 
 <h3 style="padding-bottom:6px; padding-left:20px; color:#ffffff; background-color:#E74C3C;">五、删除方法</h3>
+
+> 删除元素的思路：定位到 **段segment** ，segment 是用来存放 HashEntry散列表的，散列表table是实际存放元素的地方，然后再定位散列表的位置，判断桶顶是否有元素，如果有的话再遍历链表。删除元素的最复杂的操作是删除链中的元素（注意解链、再接链就可以了），可以参考这里关于LinkedList源码分析更详细的文章：
+> https://github.com/about-cloud/JavaCore
+> 当然后面还会持续更新本文，有兴趣可以关注上面GitHub文章。
