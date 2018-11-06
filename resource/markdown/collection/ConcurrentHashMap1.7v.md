@@ -40,9 +40,9 @@ V replace(K key, V value);
 
 > `ConcurrentHashMap`是基于 **分段锁** 机制设计的，将一个大的Map分割成n个小的 **段segment**，对每段进行加锁，降低了容器加锁的粒子度，每段(segment)各自加锁，互不影响，当一个线程访问 Map 其中一段数据时，其他段的数据也能被线程正常访问。分段锁使用的锁是 `ReentrantLock` 可重入锁。
 
-![ConcurrentHashMap1.7v]()
+![ConcurrentHashMap1.7v](http://pgq1yfr0p.bkt.clouddn.com/image/java/collection/segments.png)
 
-#### 常量
+#### :star2:重要的字段
 
 ```java
 /** table的默认初始容量 16，可以通过构造函数指定初始容量 */
@@ -61,27 +61,17 @@ static final int MIN_SEGMENT_TABLE_CAPACITY = 2;
 static final int MAX_SEGMENTS = 1 << 16; // 略微保守的段数
 /** 加锁失败时的重试次数 */
 static final int RETRIES_BEFORE_LOCK = 2;
-```
-
-#### 字段(部分含义请结合下图)
-
-```java
- /* ----------------  -------------- */
-/** 用于分割成段的掩码值。密钥的哈希代码的高位位用于选择该段。 */
-用来对segment进行定位，判断哪个segment
-segment的偏移，segment中的索引
+/** 分割段时使用的掩码值。用来对segment进行定位，判断应该落在哪个段segment中 */
 final int segmentMask;
-/** 段内索引的移位值。 */
+/** 段内索引的偏移量 */
 final int segmentShift;
 /** 将原来整个大的哈希表分割成n个小的哈希表，这里的每段就是专用的小的哈希表。 */
 final Segment<K,V>[] segments;
 ```
 
-![字段]()
-
 #### :briefcase:ConcurrentHashMap 列表条目
 
-> 它的元素节点项 `HashEntry<K,V>` 是内部独有静态类，不像 `HashMap` 的 Entry<K, V> 实现至 Map.Entry<K, V>。它们都很相似，但不同的是 节点HashEntry<K,V>被 `final` 修饰表示被会被继承，在 `HashEntry` 静态内部类的内部 key 和 hash 是被 `final` 修饰，赋予其不能被修改的特性。 value和指向下一个节点的变量next是被 `volatile` 修饰的，表示具有 **可见性** ，所以 **读操作** 在无需加锁的情况下总能读取最新的数据 。
+> 它的元素节点项 `HashEntry<K,V>` 是内部独有静态类，不像 `HashMap` 的 `Entry<K, V>` 实现至 `Map.Entry<K, V>`。它们都很相似，但不同的是 节点`HashEntry<K,V>`被 `final` 修饰表示被会被继承，在 `HashEntry` 静态内部类的内部 key 和 hash 是被 `final` 修饰，赋予其不能被修改的特性。 value和指向下一个节点的变量next是被 `volatile` 修饰的，表示具有 **可见性** ，所以 **读操作** 在无需加锁的情况下总能读取最新的数据 。
 
 ```java
 static final class HashEntry<K,V> {
@@ -101,23 +91,12 @@ static final class HashEntry<K,V> {
 
     /** 设置具有 volatile 特性的 next 属性值 */
     final void setNext(HashEntry<K,V> n) {
+        // objectFieldOffset 这个方法的意思是获取字段属性的偏移量（也就是内存位置）
         UNSAFE.putOrderedObject(this, nextOffset, n);
     }
 
     // Unsafe 操作
-    static final sun.misc.Unsafe UNSAFE;
-    static final long nextOffset;
-    static {
-        try {
-            UNSAFE = sun.misc.Unsafe.getUnsafe();
-            Class k = HashEntry.class;
-            // objectFieldOffset 这个方法的意思是获取字段属性的偏移量（也就是内存位置）
-            nextOffset = UNSAFE.objectFieldOffset
-                (k.getDeclaredField("next"));
-        } catch (Exception e) {
-            throw new Error(e);
-        }
-    }
+    ...
 }
 ```
 
@@ -140,7 +119,10 @@ static final class Segment<K,V> extends ReentrantLock implements Serializable {
         Runtime.getRuntime().availableProcessors() > 1 ? 64 : 1;
         // Runtime.getRuntime().availableProcessors() 获取Java虚拟机可用的处理器数量
 
-    /** 每段被volatile修饰的 table散列表。通过 entryAt/setEntryAt 方法访问元素 */
+    /**
+     * 每段被volatile修饰的 table散列表（实际存放元素的地方）。
+     * 通过 entryAt/setEntryAt 方法访问元素
+     */
     transient volatile HashEntry<K,V>[] table;
 
     /** 元素的个数。仅在加锁或者保持volatile可见性的情况下读取（访问）*/
@@ -464,7 +446,7 @@ public ConcurrentHashMap(int initialCapacity,
     // 保证并发等级最大为 1 << 16
     if (concurrencyLevel > MAX_SEGMENTS)
         concurrencyLevel = MAX_SEGMENTS;
-    // 查找 2的次幂 个最匹配的参数
+    // 下面这些操作用户计算 segments 长度、具体要分成多少段
     int sshift = 0;
     int ssize = 1;
     while (ssize < concurrencyLevel) {
@@ -481,12 +463,15 @@ public ConcurrentHashMap(int initialCapacity,
     int cap = MIN_SEGMENT_TABLE_CAPACITY;
     while (cap < c)
         cap <<= 1;
-    // 创建 segments数组 and segments[0]
+    // 创建单个segment用于填充segments[0]位置(因为实际存储元素是在HashEntry上)
     Segment<K,V> s0 =
         new Segment<K,V>(loadFactor, (int)(cap * loadFactor),
                          (HashEntry<K,V>[])new HashEntry[cap]);
+    // 创建 segments数组
     Segment<K,V>[] ss = (Segment<K,V>[])new Segment[ssize];
+    // 将 s0段填充到 segments[0]
     UNSAFE.putOrderedObject(ss, SBASE, s0); // ordered write of segments[0]
+    // 设置 segments
     this.segments = ss;
 }
 ```
@@ -516,6 +501,128 @@ public ConcurrentHashMap() {
 
 
 <h3 style="padding-bottom:6px; padding-left:20px; color:#ffffff; background-color:#E74C3C;">四、添加方法</h3>
+
+> 通过上面的分析，我们知道 segments数组本身不是用来存放 **元素** 的，它是用来存储 `HashEntry<K, V>[] tab 数组`的， 真正存储元素的是 `HashEntry<K, V>[] tab`。下面我们通过源码来分析元素是如何存储的：
+
+#### 添加键值对的 put 方法:heavy_plus_sign:
+
+```java
+public V put(K key, V value) {
+    Segment<K,V> s;
+    // 不允许 value 为 null 值，否则抛出NPE
+    if (value == null)
+        throw new NullPointerException();
+    // 计算key的哈希码
+    int hash = hash(key);
+    // 计算应该落到哪一段segment(段号)
+    int j = (hash >>> segmentShift) & segmentMask;
+    // 如果该片段为null，那么进入ensureSegment(int k)方法处理
+    if ((s = (Segment<K,V>)UNSAFE.getObject(segments, (j << SSHIFT) + SBASE)) == null)
+        s = ensureSegment(j);
+    // 添加并返回value
+    return s.put(key, hash, value, false);
+}
+```
+
+#### 确保分段不为null的方法:heavy_check_mark:
+
+```java
+/**
+ * 返回指定的index处的segment段。如果不存在，就在 segments数组中（通过CAS自旋）创建并记录
+ *
+ * @param k 指定段的索引
+ * @return 此段segment
+ */
+@SuppressWarnings("unchecked")
+private Segment<K,V> ensureSegment(int k) {
+    // segment集合数组
+    final Segment<K,V>[] ss = this.segments;
+    long u = (k << SSHIFT) + SBASE; // 原始偏移量
+    Segment<K,V> seg;
+    // 获取 segments（这里是ss）集合数组在偏移量u位置的那一段
+    // 如果此段为null，那么就创建
+    if ((seg = (Segment<K,V>)UNSAFE.getObjectVolatile(ss, u)) == null) {
+        // 使用 segments[0]这一段作为原型
+        Segment<K,V> proto = ss[0];
+        // cap指的是 HashEntry<K, V> table数组的容量(capacity)，也就是数组的长度
+        int cap = proto.table.length;
+        // 负载因子
+        float lf = proto.loadFactor;
+        // 阈值 = 容量 * 负载因子
+        int threshold = (int)(cap * lf);
+        // 有了必要的参数后，就开始构造实际存放元素的HashEntry数组了
+        HashEntry<K,V>[] tab = (HashEntry<K,V>[])new HashEntry[cap];
+        // 再次判断想要的segment是否存在
+        if ((seg = (Segment<K,V>)UNSAFE.getObjectVolatile(ss, u))
+            == null) {
+            // 如果还未null那么久创建一个segment(并把构造号的HashEntry数组放入)
+            Segment<K,V> s = new Segment<K,V>(lf, threshold, tab);
+            // 通过CAS自旋抢占资源方式来确保刚构造的segment这一段放入 ss(既segments)中
+            while ((seg = (Segment<K,V>)UNSAFE.getObjectVolatile(ss, u))
+                   == null) {
+                if (UNSAFE.compareAndSwapObject(ss, u, null, seg = s))
+                    break;
+            }
+        }
+    }
+    // 返回
+    return seg;
+}
+```
+
+#### :boat::boat::boat:实际将键值对添加到集合中的方法
+
+```java
+// 这里很像HashMap添加元素的操作(可参考往期文章：https://github.com/about-cloud/JavaCore)
+final V put(K key, int hash, V value, boolean onlyIfAbsent) {
+    // 先尝试获取锁，如果成功获取那么返回🔙null，否则就通过扫描加锁来存放元素
+    HashEntry<K,V> node = tryLock() ? null :
+        scanAndLockForPut(key, hash, value);
+    V oldValue;
+    try {
+        // 此段中存放元素的哈希表
+        HashEntry<K,V>[] tab = table;
+        // 通过 逻辑与&🌧 计算出桶号(哈希槽位置)(请参考HashMap)
+        int index = (tab.length - 1) & hash;
+        HashEntry<K,V> first = entryAt(tab, index);
+        for (HashEntry<K,V> e = first;;) {
+            if (e != null) {
+                K k;
+                if ((k = e.key) == key ||
+                    (e.hash == hash && key.equals(k))) {
+                    oldValue = e.value;
+                    if (!onlyIfAbsent) {
+                        e.value = value;
+                        ++modCount;
+                    }
+                    break;
+                }
+                e = e.next;
+            }
+            else {
+                if (node != null)
+                    node.setNext(first);
+                else
+                    node = new HashEntry<K,V>(hash, key, value, first);
+                int c = count + 1;
+                if (c > threshold && tab.length < MAXIMUM_CAPACITY)
+                    rehash(node);
+                else
+                    setEntryAt(tab, index, node);
+                ++modCount;
+                count = c;
+                oldValue = null;
+                break;
+            }
+        }
+    } finally {
+        unlock();
+    }
+    return oldValue;
+}
+```
+
+
 
 
 
