@@ -25,8 +25,6 @@ static final int MAXIMUM_CAPACITY = 1 << 30;
 static final float DEFAULT_LOAD_FACTOR = 0.75f;
 /** 当 table 未填充的时候，共享这个空table */
 static final Entry<?,?>[] EMPTY_TABLE = {};
-/** 默认实际存储元素项数量的阈值 8 */
-static final int TREEIFY_THRESHOLD = 8;
 /** （这个表又称为基本表）该 table 根据需要而调整大小。长度必须始终是2的次幂。 */
 transient Entry<K,V>[] table = (Entry<K,V>[]) EMPTY_TABLE;
 /** map 中 存储 key-value 映射的数量 */
@@ -41,7 +39,7 @@ transient int modCount;
 static final int ALTERNATIVE_HASHING_THRESHOLD_DEFAULT = Integer.MAX_VALUE;
 ```
 
-`HashMap` 重点元素 **项**：之前文章已讲解了 `Map.Entry` 接口，下面就来分析一下 `jdk1.7` `HashMap`实现`Map.Entry`
+`HashMap` 重点元素 **项Entry<K, V>**：之前文章已讲解了 `Map.Entry` 接口，下面就来分析一下 `jdk1.7` `HashMap`实现`Map.Entry` 的 **Entry<K, V>**：
 
 ```java
 static class Entry<K,V> implements Map.Entry<K,V> {
@@ -54,7 +52,7 @@ static class Entry<K,V> implements Map.Entry<K,V> {
     int hash;
 
     /**
-     * 构造方法创建一个新的entry项
+     * 构造方法用于注入 entry项 的属性值(或引用)
      * 参数从左至右依次是：key的哈希码，key，value，指向的下一个entry
      */
     Entry(int h, K k, V v, Entry<K,V> n) {
@@ -63,21 +61,25 @@ static class Entry<K,V> implements Map.Entry<K,V> {
         key = k;
         hash = h;
     }
-
+	// getter & toString 方法
     public final K getKey() {
         return key;
     }
-    
     public final V getValue() {
         return value;
     }
-
+    public final String toString() {
+        return getKey() + "=" + getValue();
+    }
+    
+	// 设置节点的新值value
     public final V setValue(V newValue) {
         V oldValue = value;
         value = newValue;
         return oldValue;
     }
-
+    
+	// 比较节点的方法
     public final boolean equals(Object o) {
         // 检查类型
         if (!(o instanceof Map.Entry))
@@ -96,13 +98,10 @@ static class Entry<K,V> implements Map.Entry<K,V> {
         }
         return false;
     }
-
+    
+	// 返回节点的哈希码
     public final int hashCode() {
         return Objects.hashCode(getKey()) ^ Objects.hashCode(getValue());
-    }
-
-    public final String toString() {
-        return getKey() + "=" + getValue();
     }
 
     /**
