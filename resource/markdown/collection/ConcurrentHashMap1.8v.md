@@ -1,12 +1,7 @@
-> :dog:本文是基于 `jdk1.7.0_79` 分析
+> :dog:本文是基于 `jdk1.8.0_151` 分析
 >
-> 本文内容较多，我删减后篇幅还是较长，长期有耐心，:stew:慢慢解读吧。
 
-<h3 style="padding-bottom:6px; padding-left:20px; color:#ffffff; background-color:#E74C3C;">零、非线程安全HashMap</h3>
-
-> 前面[文章](https://github.com/about-cloud/JavaCore)分析了 `HashMap` 源码，但其操作是非现在安全的，比如两个线程并发赋值，其中key相同，而value不相同，就有可能造成值覆盖的情况。再比如一个线程并发删操作、另一个线性并发写操作，也可能造成空转问题。`java.util.concurrent` 包 `ConcurrentHashMap` 是其线程安全的实现。
-
-
+> 如果你已经阅读了我之前写的关于 `HashMap` 和 `ConcurrentHashMap` [文章](https://github.com/about-cloud/JavaCore)，对本篇 `jdk1.8版` 的`ConcurrentHashMap` 源码分析更容量理解。
 
 :family:
 
@@ -17,19 +12,30 @@ public class ConcurrentHashMap<K, V> extends AbstractMap<K, V>
         implements ConcurrentMap<K, V>, Serializable
 ```
 
-> 抽象类 `AbstractMap` 实现了一些常用的方法，接口 `ConcurrentMap` 也是继承至 `Map` 接口，它具有并发操作的支持。
->
-> 接口 `ConcurrentMap` 定义的未实现方法如下：
+> 从扩展关系上，没有任何变化，但 `ConcurrentMap<K, V>` 又添加几个 `default` 方法，`default` 的好处在[上篇文章](https://github.com/about-cloud/JavaCore)中已经提到过：
 
 ```java
-// 添加不存在的元素
-V putIfAbsent(K key, V value);
-// 删除元素
-boolean remove(Object key, Object value);
-// 替换指定key的value，替换成功返回true，否则返回false
-boolean replace(K key, V oldValue, V newValue);
-// 替换指定key的value
-V replace(K key, V value);
+/**
+ * forEach 迭代方法
+ *
+ * @throws NullPointerException {@inheritDoc}
+ * @since 1.8
+ */
+default void forEach(BiConsumer<? super K, ? super V> action) {
+    Objects.requireNonNull(action);
+    for (Map.Entry<K, V> entry : entrySet()) {
+        K k;
+        V v;
+        try {
+            k = entry.getKey();
+            v = entry.getValue();
+        } catch(IllegalStateException ise) {
+            continue;
+        }
+        action.accept(k, v);
+    }
+}
+/** 其他略 */
 ```
 
 
@@ -38,9 +44,35 @@ V replace(K key, V value);
 
 <h3 style="padding-bottom:6px; padding-left:20px; color:#ffffff; background-color:#E74C3C;">二、ConcurrentHashMap数据结构</h3>
 
-> `ConcurrentHashMap`是基于 **分段锁** 机制设计的，将一个大的Map分割成n个小的 **段segment**，对每段进行加锁，降低了容器加锁的粒子度，每段(segment)各自加锁，互不影响，当一个线程访问 Map 其中一段数据时，其他段的数据也能被线程正常访问。分段锁使用的锁是 `ReentrantLock` 可重入锁。
+####回顾 jdk 1.7 的 ConcurrentHashMap 的数据结构
+
+> `jdk 1.7` 的`ConcurrentHashMap`是基于 **分段锁** 机制设计的，将一个大的Map分割成n个小的 **段segment**，对每段进行加锁，降低了容器加锁的粒子度，每段(segment)各自加锁，互不影响，当一个线程访问 Map 其中一段数据时，其他段的数据也能被线程正常访问。分段锁使用的锁是 `ReentrantLock` 可重入锁。
 
 ![ConcurrentHashMap1.7v](http://pgq1yfr0p.bkt.clouddn.com/image/java/collection/segments.png)
+
+#### :star2:优化后的 jdk 1.8 的 ConcurrentHashMap 的数据结构
+
+> `jdk 1.8` 的 `ConcurrentHashMap` 
+
+TODO
+
+
+
+#### 🌟重要的字段
+
+```java
+/** 最大容量 10.7亿+ */
+private static final int MAXIMUM_CAPACITY = 1 << 30;
+/** table的默认初始容量 16，容量必须为 2 的次幂 */
+private static final int DEFAULT_CAPACITY = 16;
+
+
+
+```
+
+
+
+
 
 #### :star2:重要的字段
 
