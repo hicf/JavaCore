@@ -142,11 +142,13 @@ int threshold;
 final float loadFactor;
 ```
 
-#### Node<K, V> 节点
+#### 🌞 大多数用于存储元素的 Node<K, V> 节点（链表必用的节点）
 
-`HashMap` 重点元素 **项Entry<K, V>** 在 `jdk1.8` 已改为 **节点Node<K, V>**，但它还是实现于 `Map.Entry` 接口，下面就来分析一下 `jdk1.8` `HashMap`实现`Map.Entry` 的 **Node<K, V>**：
+>  `HashMap` 重点元素 **项Entry<K, V>** 在 `jdk1.8` 已改为 **节点Node<K, V>**，但它还是实现于 `Map.Entry` 接口，下面就来分析一下 `jdk1.8` `HashMap`实现`Map.Entry` 的 **Node<K, V>**：
+>
+> :underage:请注意：这个**Node<K, V>** 是**大多数** 用于存储的元素节点，并不是全部，而**红黑树** 是用下面的 **TreeNode<K, V>** 节点作为元素存储节点。因为 **链表** 中的每个节点只有一个后继节点，而 **TreeNode<K, V>** 作为二叉树中的节点，最多可有两个后继节点（既左、右子节点）。
 
-:underage:请注意：这个**Node<K, V>** 是**大多数** 用于存储的元素节点，并不是全部，而**红黑树** 是用下面的 **TreeNode<K, V>** 节点作为元素存储节点。因为 **链表** 只有一个后继节点，而 **TreeNode<K, V>** 做而二叉树中的节点，最多可有两个后继节点（既左右子节点）。可参考[往期的文章](https://github.com/about-cloud/JavaCore)：https://github.com/about-cloud/JavaCore
+可参考[往期的文章](https://github.com/about-cloud/JavaCore)：https://github.com/about-cloud/JavaCore
 
 ```java
 static class Node<K,V> implements Map.Entry<K,V> {
@@ -155,7 +157,7 @@ static class Node<K,V> implements Map.Entry<K,V> {
     final K key;
     // 可被重复设置值的value
     V value;
-    // 当前节点的下一个节点(用于链表、红黑树)
+    // 当前节点的下一个节点(用于链表)
     Node<K,V> next;
 	/**
      * 构造方法用于注入 node节点 的属性值(或引用)
@@ -197,9 +199,7 @@ static class Node<K,V> implements Map.Entry<K,V> {
 }
 ```
 
-#### TreeNode<K, V> 节点
-
-> 红黑树专用节点
+#### 🎉专用于红黑树的 TreeNode<K, V> 节点
 
 ```java
 static final class TreeNode<K,V> extends LinkedHashMap.Entry<K,V> {
@@ -213,6 +213,7 @@ static final class TreeNode<K,V> extends LinkedHashMap.Entry<K,V> {
     TreeNode<K,V> prev;
     // 红黑标识：true表示此节点为红色，false表示此节点为黑色
     boolean red;
+    // 有参构造方法
     TreeNode(int hash, K key, V val, Node<K,V> next) {
         super(hash, key, val, next);
     }
@@ -294,7 +295,7 @@ final V putVal(int hash, K key, V value, boolean onlyIfAbsent,
             // 既不为空节点，又不是红黑树中的节点，
             // 那么就是普通Node<K, V>节点（这里可以认为是链表中的节点了）
             // 遍历链表
-            // binCount 用来记录链表中节点，进而判断是否达到转为红黑树的阈值
+            // binCount 用来记录链表中节点数量，进而判断是否达到转为红黑树的阈值
             for (int binCount = 0; ; ++binCount) {
                 // 获得链表中当前节点p的下一个节点e
                 // 并判断下一个节点e是否为null
@@ -379,7 +380,6 @@ final TreeNode<K,V> putTreeVal(HashMap<K,V> map, Node<K,V>[] tab,
         // 那么表示已存在指的key的节点，并返回此节点
         else if ((pk = p.key) == k || (k != null && k.equals(pk)))
             return p;
-        // 此时已经它已经怀疑人生了
         else if ((kc == null &&
                 // 判断 k 的类是否实现了比较器
                 (kc = comparableClassFor(k)) == null) ||
