@@ -54,7 +54,7 @@ default void forEach(BiConsumer<? super K, ? super V> action) {
 
 > `jdk 1.8` 的 `ConcurrentHashMap`  相对于较前的版本该动还是蛮大。
 >
-> 首先取消了 `分段锁` 的设计，而改用像 `jdk 1.8` 中 `HashMap` 那样的数据结构：**数组** + **链表** + **红黑树**。
+> 首先取消了 `分段锁` 的设计，而改用像 `jdk 1.8` 中 `HashMap` 那样的数据结构：**数组** + **链表** + **红黑树**（但依然保留着 **分段锁** 的这种设计思想）。
 >
 > 再次，在保证线程安全的问题了取消了 `ReentrantLock` 改用 `CAS` + `synchronized` 保证并发的安全。（当然ReentrantLock 的原理也是基于CAS的），在使用 `synchronized` 时并没有像 `Hashtable` 那样粗暴地锁住整个数组，而它是锁住单个节点。TODO
 
@@ -118,6 +118,12 @@ private transient volatile int cellsBusy;
 /** 计数器池，非空时，大小为2的次幂 */
 private transient volatile CounterCell[] counterCells;
 ```
+
+
+
+<h3 style="padding-bottom:6px; padding-left:20px; color:#ffffff; background-color:#E74C3C;">三、ConcurrentHashMap中各种数据节点</h3>
+
+`jdk1.8 ConcurrentHashMap` 中数据节点的种类比较多，比如 **Node<K, V>**、**TreeNode<K, V>**、**TreeBin<K, V>**、**ReservationNode<K,V>**。正式这种独具特色的设计，才拥有高性能的Map并发容器。
 
 
 
@@ -278,7 +284,7 @@ static final class TreeNode<K,V> extends Node<K,V> {
 
 
 
-:bus: computeIfAbsent 和 compute 方法使用的位置保留节点
+:bus: computeIfAbsent 和 compute 方法使用的位置 **保留节点**
 
 ```java
 static final class ReservationNode<K,V> extends Node<K,V> {
@@ -294,7 +300,31 @@ static final class ReservationNode<K,V> extends Node<K,V> {
 
 
 
-<h3 style="padding-bottom:6px; padding-left:20px; color:#ffffff; background-color:#E74C3C;">三、ConcurrentHashMap添加元素操作</h3>
+#### :octopus:持有红黑树根节点的容器
+
+> TreeBin 是保证 ConcurrentHashMap 线程安全的重要数据结构，它自身维护着读/写锁:closed_lock_with_key:。
+
+```java
+static final class TreeBin<K,V> extends Node<K,V> {
+    // 红黑树的根节点
+    TreeNode<K,V> root;
+    // // 链表的头节点（桶顶的节点）
+    volatile TreeNode<K,V> first;
+    // 最近一个设置 waiter 标识位的线程
+    volatile Thread waiter;
+    // 锁状态标识位
+    volatile int lockState;
+    static final int WRITER = 1; // 持有写锁时的状态位
+    static final int WAITER = 2; // 正在等待写锁的状态位
+    static final int READER = 4; // 设置读锁时的增量值
+    
+    ...其他方法跟 TreeNode 中的方法很相似
+}
+```
+
+
+
+<h3 style="padding-bottom:6px; padding-left:20px; color:#ffffff; background-color:#E74C3C;">四、ConcurrentHashMap添加元素操作</h3>
 
 #### 面向用户的 put 方法
 
@@ -372,6 +402,7 @@ final V putVal(K key, V value, boolean onlyIfAbsent) {
                                 // 如果当前节点的下一个节点为null，就把元素添加到链表的尾部
                                 pred.next = new Node<K,V>(hash, key,
                                                           value, null);
+                                // 添加完成后就直接跳出循环
                                 break;
                             }
                         }
@@ -379,9 +410,11 @@ final V putVal(K key, V value, boolean onlyIfAbsent) {
                     else if (f instanceof TreeBin) {
                         Node<K,V> p;
                         binCount = 2;
+                        // 将元素添加到红黑树
                         if ((p = ((TreeBin<K,V>)f).putTreeVal(hash, key,
                                                        value)) != null) {
                             oldVal = p.val;
+                            // 是否可以覆盖已有的value
                             if (!onlyIfAbsent)
                                 p.val = value;
                         }
@@ -389,7 +422,9 @@ final V putVal(K key, V value, boolean onlyIfAbsent) {
                 }
             }
             if (binCount != 0) {
+                // 判断在链表不为空的情况下，是否达到转为红黑树的阈值
                 if (binCount >= TREEIFY_THRESHOLD)
+                    // 如果链表元素达到转为红黑树的阈值，就转为红黑树
                     treeifyBin(tab, i);
                 if (oldVal != null)
                     return oldVal;
@@ -397,6 +432,7 @@ final V putVal(K key, V value, boolean onlyIfAbsent) {
             }
         }
     }
+    // 添加计数
     addCount(1L, binCount);
     return null;
 }
@@ -404,7 +440,54 @@ final V putVal(K key, V value, boolean onlyIfAbsent) {
 
 
 
+#### :sailboat:添加计数 addCount
 
+> 方法的实现很像 **LongAdder**
+
+```java
+private final void addCount(long x, int check) {
+    // 计数池
+    CounterCell[] as;
+    // b表示实际存放元素的数量；s表示添加元素后的数量
+    long b, s;
+    if ((as = counterCells) != null ||
+        // 使用CAS自旋方式加上数量
+        !U.compareAndSwapLong(this, BASECOUNT, b = baseCount, s = b + x)) {
+        CounterCell a; long v; int m;
+        boolean uncontended = true;
+        if (as == null || (m = as.length - 1) < 0 ||
+            (a = as[ThreadLocalRandom.getProbe() & m]) == null ||
+            !(uncontended =
+              U.compareAndSwapLong(a, CELLVALUE, v = a.value, v + x))) {
+            // 多线程下竞争失败会走这里
+            fullAddCount(x, uncontended);
+            return;
+        }
+        if (check <= 1)
+            return;
+        s = sumCount();
+    }
+    if (check >= 0) {
+        Node<K,V>[] tab, nt; int n, sc;
+        while (s >= (long)(sc = sizeCtl) && (tab = table) != null &&
+               (n = tab.length) < MAXIMUM_CAPACITY) {
+            int rs = resizeStamp(n);
+            if (sc < 0) {
+                if ((sc >>> RESIZE_STAMP_SHIFT) != rs || sc == rs + 1 ||
+                    sc == rs + MAX_RESIZERS || (nt = nextTable) == null ||
+                    transferIndex <= 0)
+                    break;
+                if (U.compareAndSwapInt(this, SIZECTL, sc, sc + 1))
+                    transfer(tab, nt);
+            }
+            else if (U.compareAndSwapInt(this, SIZECTL, sc,
+                                         (rs << RESIZE_STAMP_SHIFT) + 2))
+                transfer(tab, null);
+            s = sumCount();
+        }
+    }
+}
+```
 
 
 
