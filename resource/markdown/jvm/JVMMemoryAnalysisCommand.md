@@ -271,8 +271,14 @@ KiB Swap:        0 total,        0 free,        0 used.   414824 avail Mem
 #### top -d -n -p 有参
 
 ```shell
-$ top -d 5 -n 20 -p 2395
+$ top -d 5 -n 20 -p 2395 # 表示每5秒分析一次，共动态分析20词，监视的进程号2395
+top - 09:30:02 up 207 days, 19:35,  2 users,  load average: 0.00, 0.02, 0.05
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  1.0 us,  0.3 sy,  0.0 ni, 98.7 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem : 16267428 total,   175448 free, 15553816 used,   538164 buff/cache
+KiB Swap:        0 total,        0 free,        0 used.   382452 avail Mem 
 
-
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND                                                   
+ 2395 root      20   0 9382196 1.807g   6252 S   7.4 11.6   1270:55 java 
 ```
 
