@@ -1,10 +1,58 @@
-11
+
+
+前面的[章节](https://github.com/about-cloud/JavaCore)已经讲过，TCP是面向连接的传输协议。
+
+<h3 style="padding-bottom:6px; padding-left:20px; color:#ffffff; background-color:#E74C3C;">一、3次握手过程</h3>
+
+![三次握手]()
+
+#### 第一次握手
+
+>  客户端发起请求，发送 **SYN** (seq=i)到服务器，表示请求连接，之后客户端处于 **SYN_SNET** 状态；
+
+#### 第二次握手
+
+>  服务端接收到客户端的TCP连接请求，响应 **ACK**(ack=i+1) + **SYN**(seq=j)表示已确认客户端的请求，并表示可以连接，之后服务端处于 **SYN_RCVD** 状态；
+
+#### 第三次握手
+
+> 客户端收到服务端消息，并回复 **ACK** (ack=j+1, seq=i+1,)确认已收到服务端的消息。之后双端处于  **ESTABLISHED** 状态表示已成功建立 **连接**。
+
+*SYN 是Synchronize Sequence Numbers,同步序列号的缩写；
+
+   ACK是Acknowledgement,确认、答复的缩写。
+
+   SENT 表示发送；
+
+   RCVD 是received缩写，表示已收到；
+
+   ESTABLISHED 表示已建立。
+
+#### 
+
+<h3 style="padding-bottom:6px; padding-left:20px; color:#ffffff; background-color:#E74C3C;">二、4次挥手过程</h3>
+
+![三次挥手]()
+
+#### 第一次挥手
+
+>
+
+#### 第二次挥手
+
+>
+
+#### 第三次挥手
+
+>
+
+#### 第四次挥手
+
+>
 
 
 
-11
-
-
+<h3 style="padding-bottom:6px; padding-left:20px; color:#ffffff; background-color:#E74C3C;">一次线上问题分析</h3>
 
 ```python
 tcp  1  1 111.16.111.156:8089     203.111.111.111:18201   LAST_ACK    -                   
@@ -12,7 +60,7 @@ tcp  1  1 111.16.111.156:8089     203.111.135.187:49694   LAST_ACK    -
 tcp  1  1 111.16.111.156:8089     203.111.111.60:5529     LAST_ACK    -
 ```
 
-1
+
 
 ```python
 tcp  0  0 0.0.0.0:8089            0.0.0.0:*               LISTEN      31467/java          
