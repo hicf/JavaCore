@@ -52,14 +52,13 @@
 * [Java多线程与并发框 （第 09 篇） 深入理解：Java各种锁与无锁]()
 * [Java多线程与并发框 （第 10 篇） 深入理解：CAS]()
 * [Java多线程与并发框 （第 10 篇） 深入理解：CLH锁]()
-
 * [Java多线程与并发框 （第 11 篇） 深入理解：并发包的基石 -- 队列同步器 AQS]()
 * [Java多线程与并发框 （第 12 篇） 深入理解：并发辅助工具类（很好的玩的工具类）]()
 * [Java多线程与并发框 （第 12 篇） 深入理解：线程池]()
 * [Java多线程与并发框 （第 13 篇） 深入理解：定时/计划任务]()
 * [Java多线程与并发框 （第 14 篇） 深入理解：ForkJoin框架]()
 * [Java多线程与并发框 （第 15 篇） 深入理解：原子操作]()
-* [Java多线程与并发框 （第 16 篇) 深入理解：ThreadLocal]()
+* [Java多线程与并发框 （第 16 篇） 深入理解：ThreadLocal]()
 
 
 ### 四、:satellite::satellite::satellite:网络协议:globe_with_meridians::globe_with_meridians::globe_with_meridians:![Progress](http://progressed.io/bar/0)
