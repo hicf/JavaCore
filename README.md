@@ -71,7 +71,7 @@
 * [网络协议 （第 01 篇） 精讲：一位用户从浏览器地址框输入url、按下回车键后，经历了什么]()
 * 网络协议 （第 01 篇） 精讲：加密
 * [网络协议 （第 01 篇） 精讲：IP地址的分类]()
-* [网络协议 （第 01 篇） 精讲：常见状态码及含义]()
+* [网络协议 （第 01 篇） 精讲：常见HTTP状态码及含义]()
 
 
 ### 五、:leaves::four_leaf_clover::fountain:Spring 5.x 核心篇 ![Progress](http://progressed.io/bar/0)
@@ -102,7 +102,7 @@
 
 ### 七、:closed_book::green_book::blue_book::notebook_with_decorative_cover::books:MySQL ![Progress](http://progressed.io/bar/0)
 * [数据库 （第 01 篇）精讲：数据库的三大范式与五大约束]()
-* [数据库 （第 01 篇）精讲：事务的ACID特性与四种隔离级别]()
+* [数据库 （第 01 篇）精讲：事务的四大特性与四种隔离级别]()
 * [数据库 （第 01 篇）精讲： MySQL InnoDB 索引]()
 * [数据库 （第 01 篇）精讲： MySQL锁机制]()
 * [数据库 （第 01 篇）精讲： 悲观锁与乐观锁]()

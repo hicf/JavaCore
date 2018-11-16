@@ -1,2 +1,67 @@
-<h3 style="padding-bottom:6px; padding-left:20px; color:#ffffff; background-color:#E74C3C;">一、ArrayList</h3>
+<h3 style="padding-bottom:6px; padding-left:20px; color:#ffffff; background-color:#E74C3C;">数据库事务是什么？</h3>
 
+**数据库事务**(Database Transaction) ，是指作为 **单个逻辑工作单元** 执行的 *一系列操作*，要么完全地执行，要么完全地不执行。
+
+
+
+<h3 style="padding-bottom:6px; padding-left:20px; color:#ffffff; background-color:#E74C3C;">一、事务的四大特性</h3>
+
+#### :new_moon: 原子性（Atomicity）
+
+> **原子性** 是指事务包含的所有 *一系列操作*  要么全部成功提交，要么全部失败回滚。它也是数据库事务最最本质的特性。
+>
+> 比如一个事务包含两个更新操作A和B，A操作更新成功，而B操作更新失败，则A操作会被回滚。绝不会出现一个成功、一个失败的场景，否则这不是一个事务。
+
+#### :four_leaf_clover:一致性（Consistency ）
+
+> **一致性** 是指事务必须使数据库从一个一致性状态变换到另一个一致性状态，也就是说一个事务执行之前和执行之后都必须处于一致性状态。
+
+常见的案例描述：
+
+> 拿转账来说，假设用户A和用户B两者的钱加起来一共是5000，那么不管A和B之间如何转账，转几次账，事务结束后两个用户的钱相加起来应该还得是5000，这就是事务的一致性。
+
+看完上面的故事没发现啥毛病，但不能说明数据库事务的一致性问题。
+
+
+
+#### :umbrella:隔离性（Isolation ）
+
+
+
+#### :dart:持久性（Durability ）
+
+
+
+<h3 style="padding-bottom:6px; padding-left:20px; color:#ffffff; background-color:#E74C3C;">三、事务的四种隔离级别</h3>
+
+> 隔离级别由低到高分别为
+
+
+
+#### 读未提交（read uncommited） 
+
+> 就是一个事务A读取另一个事务B *未提交* 的数据。（如果如果事务B出现 **回滚**，那么事务A就会出现 ~~*脏读*~~:x: 的问题）。
+
+
+
+
+
+#### 读已提交（read commited）
+
+>  一个事务A读取另一个事务B *已提交* 的数据，那么这样可以解决 ~~`脏读`~~ 的问题。保证读取的数据 **已提交**:white_check_mark: 而不能被 ~~回滚~~:back:。在事务B提交前的 **update**，事务A是读取不到的。只有事务B提交后，事务A才能读取到事务B的 `update改动`。出现的问题是  *一个事务范围内两个相同的查询却返回了不同的数据*，那么这就是`不可重复读`。
+
+
+
+#### 可重复读（Repeatable read）
+
+> 事务开启时，不再允许其他事务 ~~修改(update)~~ 数据。这样就可以无限制的读取没有被 ~~修改(update)~~ 的数据了。出现的问题是，当有 **并行插入(insert)** 操作时就会出现 **幻读**。
+
+
+
+#### 可串行化（Serializable）
+
+> 在可串行化的隔离级别下，将事务  **串行化** 顺序执行。那么事务不能进行并行操作，也就解决了 ~~*幻读*~~  的问题。
+
+
+
+***InnoDB** 的默认事务隔离级别是：**可重复读**。
