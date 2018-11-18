@@ -1,6 +1,8 @@
 > 目前阿里云推出的 *云数据库RDS* 的版本有 `5.7`、`5.6`、`5.5` 三个版本，以下测试是基于 `5.7`版本。全文也会随着版本流行度进行及时更新，原文更新地址：https://github.com/about-cloud/JavaCore
 
-<h3 style="padding-bottom:6px; padding-left:20px; color:#ffffff; background-color:#E74C3C;">优化必备的 EXPLAIN 命令</h3>
+---
+
+<h3 style="padding-bottom:6px; padding-left:20px; color:#ffffff; background-color:#E74C3C;">一、优化必备的 EXPLAIN 命令</h3>
 
 > `EXPLAIN`  是用来查询 SQL 的执行计划，
 
@@ -21,11 +23,35 @@ EXPLAIN SELECT [字段...] FROM TABLE;
 1 row in set (0.02 sec)
 ```
 
+**重要字段说明**：
+
+select_type：
+
+table：关于哪张表的结果行；
+
+partitions：
+
+**type**：非常非常重要的指标，表示MySQL在表中找到行记录的方式，又称 **访问类型**。访问类型的性能指标从差到好依次是
+
+**possible_keys**：可能用到的索引，如果为 *NULL*，表示没有可能用到的索引；
+
+**key**：用到的索引，如果为 *NULL*，表示没有使用索引；
+
+key_len：
+
+ref：
+
+rows：
+
+filtered：
+
+Extra：
 
 
 
+---
 
-<h3 style="padding-bottom:6px; padding-left:20px; color:#ffffff; background-color:#E74C3C;">索引优化</h3>
+<h3 style="padding-bottom:6px; padding-left:20px; color:#ffffff; background-color:#E74C3C;">二、索引优化</h3>
 
 #### 1、禁止无边界范围查询 `!=` 、`<`  、`>` 、`=<` 、`>=` ，否则不会命中索引
 
