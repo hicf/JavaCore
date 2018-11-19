@@ -2,7 +2,7 @@
 
 > *Spring* 框架的核心是 IoC容器和AOP编程，
 
-
+![代理者模式]()
 
 jdk动态代理与CGLib
 
