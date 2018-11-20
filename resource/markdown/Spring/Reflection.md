@@ -43,7 +43,7 @@
 | Field[]                    | getFields()                                                  | 返回一个包含某些 Field 对象的数组，这些对象反映此 Class 对象所表示的类或接口的所有可访问公共字段。 |
 | Type[]                     | getGenericInterfaces()                                       | 返回表示某些接口的 Type，这些接口由此对象所表示的类或接口直接实现。 |
 | Type                       | getGenericSuperclass()                                       | 返回表示此 Class 所表示的实体（类、接口、基本类型或 void）的直接超类的 Type。 |
-| Class<?>[]                 | getInterfaces()                                              | 确定此对象所表示的类或接口实现的接口。                       |
+| Class<?>[]                 | getInterfaces()                                              | 获取此类/接口对象所的实现接口。                              |
 | Method                     | getMethod(String name, Class<?>... parameterTypes)           | 返回一个 Method 对象，它反映此 Class 对象所表示的类或接口的指定公共成员方法。 |
 | Method[]                   | getMethods()                                                 | 返回一个包含某些 Method 对象的数组，这些对象反映此 Class 对象所表示的类或接口（包括那些由该类或接口声明的以及从超类和超接口继承的那些的类或接口）的公共 member 方法。 |
 | int                        | getModifiers()                                               | 返回此类或接口以整数编码的 Java 语言修饰符。                 |

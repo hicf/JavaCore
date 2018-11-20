@@ -76,12 +76,12 @@
 
 ### 五、:leaves::four_leaf_clover::fountain:Spring 5.x 核心篇 ![Progress](http://progressed.io/bar/0)
 * [Spring 5.x （第 01 篇） 核心篇：反射机制]()
-* [Spring 5.x （第 01 篇） 核心篇：jdk动态代理与CGLib]()
+* [Spring 5.x （第 01 篇） 核心篇：静态代理、jdk动态代理与CGLib]()
 * [Spring 5.x （第 01 篇） 核心篇：请叫我IoC容器]()
 * [Spring 5.x （第 01 篇） 核心篇：依赖注入的问题 -- 循环依赖]()
-* [Spring 5.x （第 01 篇） 核心篇：Spring三个重要的框架级接口]()
 * [Spring 5.x （第 01 篇） 核心篇：BeanFactory]()
 * [Spring 5.x （第 01 篇） 核心篇：ApplicationContext]()
+* [Spring 5.x （第 01 篇） 核心篇：AbstractApplicationContext]()
 * [Spring 5.x （第 01 篇） 核心篇：Bean的生命周期]()
 * [Spring 5.x （第 01 篇） 核心篇：Bean作用域]()
 * [Spring 5.x （第 01 篇） 核心篇：AOP织入代码]()
@@ -112,7 +112,7 @@
 
 
 ### 八、:telescope::tokyo_tower::satellite:分布式系统 ![Progress](http://progressed.io/bar/0)
-* [分布式系统 （第 01 篇） 精讲：什么是分布式、微服务和集群？]()
+* [分布式系统 （第 01 篇） 精讲：什么是集群、分布式和微服务？]()
 * [分布式系统 （第 01 篇） 精讲：CAP定理与Base理论]()
 * [分布式系统 （第 01 篇） 精讲：2PC协议和3PC协议]()
 * [分布式系统 （第 01 篇） 精讲：TCC事务补偿机制（柔性事务方案）]()
