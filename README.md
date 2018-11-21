@@ -83,7 +83,7 @@
 * [Spring 5.x （第 01 篇） 核心篇：ApplicationContext]()
 * [Spring 5.x （第 01 篇） 核心篇：AbstractApplicationContext 上]()
 * [Spring 5.x （第 01 篇） 核心篇：AbstractApplicationContext 下]()
-* [Spring 5.x （第 01 篇） 核心篇：Spring应用事件、应用事件发布器与应用事件监听器？]()
+* [Spring 5.x （第 01 篇） 核心篇：Spring应用事件、应用事件发布器与应用事件监听器]()
 * [Spring 5.x （第 01 篇） 核心篇：Bean的生命周期]()
 * [Spring 5.x （第 01 篇） 核心篇：Bean作用域]()
 * [Spring 5.x （第 01 篇） 核心篇：AOP织入代码]()
