@@ -84,7 +84,7 @@ public interface AttributeAccessor {
 
 
 
-<h3 style="padding-bottom:6px; padding-left:20px; color:#ffffff; background-color:#E74C3C;">BeanDefinition</h3>
+<h3 style="padding-bottom:6px; padding-left:20px; color:#ffffff; background-color:#E74C3C;">BeanDefinition接口</h3>
 
 > *BeanDefinition* 用于描述一个Bean的实例对象，它具有属性值、构造方法参数值和由它提供的进一步信息
 >
