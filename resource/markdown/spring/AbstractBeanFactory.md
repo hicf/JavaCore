@@ -46,7 +46,7 @@ public abstract class FactoryBeanRegistrySupport extends DefaultSingletonBeanReg
 			}
 		}
 		catch (Throwable ex) {
-			// Thrown from the FactoryBean's getObjectType implementation.
+			// 从FactoryBean 的getObjectType 实现方法中抛出
 			logger.info("FactoryBean threw exception from getObjectType, despite the contract saying " +
 					"that it should return null if the type of its object cannot be determined yet", ex);
 			return null;
@@ -54,8 +54,8 @@ public abstract class FactoryBeanRegistrySupport extends DefaultSingletonBeanReg
 	}
 
 	/**
-	 * Obtain an object to expose from the given FactoryBean, if available
-	 * in cached form. Quick check for minimal synchronization.
+	 * 如果缓存容器可用的话，从给定的工厂bean中获取一个对象。
+	 * Quick check for minimal synchronization.
 	 * @param beanName the name of the bean
 	 * @return the object obtained from the FactoryBean,
 	 * or {@code null} if not available
