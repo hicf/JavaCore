@@ -1,3 +1,11 @@
+<h3 style="padding-bottom:6px; padding-left:20px; color:#ffffff; background-color:#E74C3C;">DefaultListableBeanFactory：源码分析</h3>
+
+> 个基于bean定义元数据的成熟bean工厂。典型的用法是在访问bean之前先注册所有bean定义(可能从bean定义文件读取)。因此，按名称查找Bean是本地Bean定义表中的一种廉价操作，可以对预先解析的Bean定义元数据对象进行操作。
+>
+> 注意，特定bean定义格式的读取器通常是单独实现的，而不是作为bean工厂的子类:例如，请参见 *PropertiesBeanDefinitionReader* 和 *org.springframe .beans.factory.xml. XmlBeanDefinitionReader* 。
+>
+> *org.springframework.beans.factory.ListableBeanFactory* 接口的另一种实现是 *StaticListableBeanFactory* 它管理现有的bean实例，而不是根据bean定义创建新的实例。
+
 ```java
 package org.springframework.beans.factory.support;
 
@@ -66,25 +74,6 @@ import org.springframework.util.ObjectUtils;
 import org.springframework.util.StringUtils;
 
 /**
- * Spring's default implementation of the {@link ConfigurableListableBeanFactory}
- * and {@link BeanDefinitionRegistry} interfaces: a full-fledged bean factory
- * based on bean definition metadata, extensible through post-processors.
- *
- * <p>Typical usage is registering all bean definitions first (possibly read
- * from a bean definition file), before accessing beans. Bean lookup by name
- * is therefore an inexpensive operation in a local bean definition table,
- * operating on pre-resolved bean definition metadata objects.
- *
- * <p>Note that readers for specific bean definition formats are typically
- * implemented separately rather than as bean factory subclasses:
- * see for example {@link PropertiesBeanDefinitionReader} and
- * {@link org.springframework.beans.factory.xml.XmlBeanDefinitionReader}.
- *
- * <p>For an alternative implementation of the
- * {@link org.springframework.beans.factory.ListableBeanFactory} interface,
- * have a look at {@link StaticListableBeanFactory}, which manages existing
- * bean instances rather than creating new ones based on bean definitions.
- *
  * @author Rod Johnson
  * @author Juergen Hoeller
  * @author Sam Brannen
@@ -111,7 +100,7 @@ public class DefaultListableBeanFactory extends AbstractAutowireCapableBeanFacto
 					ClassUtils.forName("javax.inject.Provider", DefaultListableBeanFactory.class.getClassLoader());
 		}
 		catch (ClassNotFoundException ex) {
-			// JSR-330 API not available - Provider interface simply not supported then.
+			// JSR-330 API 不可用 - 当时根本不支持提供程序接口。
 			javaxInjectProviderClass = null;
 		}
 	}

@@ -705,7 +705,6 @@ public class DefaultSingletonBeanRegistry extends SimpleAliasRegistry implements
 	public final Object getSingletonMutex() {
 		return this.singletonObjects;
 	}
-
 }
 ```
 
