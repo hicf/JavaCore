@@ -113,20 +113,20 @@
 
 
 ### 七、:closed_book::green_book::blue_book::notebook_with_decorative_cover::books:高性能 MySQL
-* [数据库 （第 01 篇）精讲：数据库的三大范式与五大约束]()
-* [数据库 （第 01 篇）精讲：事务的四大特性与四种隔离级别]()
-* [数据库 （第 01 篇）精讲： MySQL InnoDB 索引]()
-* [数据库 （第 01 篇）精讲： MySQL锁机制]()
-* [数据库 （第 01 篇）精讲： 悲观锁与乐观锁]()
-* [数据库 （第 01 篇）精讲： SQL优化]()
-* [数据库 （第 01 篇）精讲： 数据库读写分离]()
-* [数据库 （第 01 篇）精讲： 数据库拆分]()
+* [数据库 （第 01 篇）精讲：数据库的三大范式与五大约束](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/database/.md)
+* [数据库 （第 01 篇）精讲：事务的四大特性与四种隔离级别](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/database/.md)
+* [数据库 （第 01 篇）精讲： MySQL InnoDB 索引](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/database/.md)
+* [数据库 （第 01 篇）精讲： MySQL锁机制](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/database/.md)
+* [数据库 （第 01 篇）精讲： 悲观锁与乐观锁](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/database/.md)
+* [数据库 （第 01 篇）精讲： SQL优化](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/database/.md)
+* [数据库 （第 01 篇）精讲： 数据库读写分离](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/database/.md)
+* [数据库 （第 01 篇）精讲： 数据库拆分](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/database/.md)
 
 
 ### 八、:telescope::tokyo_tower::satellite:分布式系统
-* [分布式系统 （第 01 篇） 精讲：集群与分布式]()
-* 分布式系统 （第 01 篇） 精讲：CAP原则与BASE理论
-* 分布式系统 （第 01 篇） 精讲：2PC协议和3PC协议
+* [分布式系统 （第 01 篇） 精讲：集群与分布式](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/distribution/.md)
+* [分布式系统 （第 01 篇） 精讲：CAP定理与BASE理论](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/distribution/.md)
+* [分布式系统 （第 01 篇） 精讲：2PC协议和3PC协议](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/distribution/.md)
 * 分布式系统 （第 01 篇） 精讲：TCC事务补偿机制（柔性事务方案）
 * 分布式系统 （第 01 篇） 精讲：拜占庭将军问题
 * 分布式系统 （第 01 篇） 精讲：Paxos算法（最难、最强一致性算法）
