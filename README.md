@@ -36,12 +36,13 @@
 * [Java虚拟机 （第 08 篇） 深入理解：类文件结构]()
 * [Java虚拟机 （第 09 篇） 深入理解：类加载机制]()
 * [Java虚拟机 （第 10 篇） 深入理解：类加载的双亲委派模型]()
-* Java虚拟机 （第 11 篇） 深入理解：打破双亲委派模型]
+* Java虚拟机 （第 11 篇） 深入理解：打破双亲委派模型
 * Java虚拟机 （第 12 篇） 深入理解：OSGi与Tomcat类加载机制
 
 
 ### 三、:closed_lock_with_key:Java多线程与并发框架:unlock:   
 * [Java多线程与并发框 （第 01 篇） 深入理解：线程的状态]()
+* [Java多线程与并发框 （第 01 篇） 深入理解：线程和进程的区别]()
 * [Java多线程与并发框 （第 02 篇） 深入理解：Java内存模型]()
 * [Java多线程与并发框 （第 03 篇） 深入理解：Java内存模型的三大特性 -- 原子性、可见性、有序性]()
 * [Java多线程与并发框 （第 04 篇） 深入理解：重排序、屏障指令、as-if-serial、happens-before规则]()
@@ -96,7 +97,7 @@
 * Spring 5.x （第 01 篇） 核心篇：AnnotationConfigApplicationContext 源码分析
 * [Spring 5.x （第 01 篇） 核心篇：Bean的生命周期](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/spring/BeanLifeCycle.md)
 * [Spring 5.x （第 01 篇） 核心篇：Bean作用域](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/spring/BeanScope.md)
-* Spring 5.x （第 01 篇） 核心篇：AOP织入代码
+* Spring 5.x （第 01 篇） 核心篇：AOP原理分析
 * Spring 5.x （第 01 篇） 核心篇：Spring解决线程安全问题
 
 
