@@ -128,7 +128,7 @@
 * [分布式系统 （第 01 篇） 精讲：集群与分布式](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/distribution/.md)
 * [分布式系统 （第 01 篇） 精讲：CAP定理与BASE理论](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/distribution/.md)
 * [分布式系统 （第 01 篇） 精讲：2PC协议和3PC协议](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/distribution/.md)
-* 分布式系统 （第 01 篇） 精讲：TCC事务补偿机制（柔性事务方案）
+* [分布式系统 （第 01 篇） 精讲：TCC事务补偿机制（柔性事务方案）](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/distribution/.md)
 * 分布式系统 （第 01 篇） 精讲：拜占庭将军问题
 * 分布式系统 （第 01 篇） 精讲：Paxos算法（最难、最强一致性算法）
 * 分布式系统 （第 01 篇） 精讲：Chubby 与 Zookeeper
