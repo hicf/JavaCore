@@ -9,7 +9,7 @@
 
 > ArrayList是动态数组，其动态性体现在能够`动态扩容、缩容`。（其原理是构建一个新Object数组，将原数组复制进去。借助 `Arrays.copyOf(T[] original, int newLength)）` 。
 
-> ![ArrayList继承关系](https://upload-images.jianshu.io/upload_images/11476758-6749a7cf5848ce66.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+> ![ArrayList继承关系](https://i.loli.net/2018/12/09/5c0cbffb79b69.png)
 
 ####  重要的属性:ledger:
 ```java
