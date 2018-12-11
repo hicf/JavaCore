@@ -38,7 +38,7 @@ boolean isEmpty();
 boolean containsKey(Object key);
 // 判断比较map中是否含有指定对象相等的value，如果含有返回true
 boolean containsValue(Object value);
-// 通过key国外value
+// 通过key获取对应的value
 V get(Object key);
 // 放入 key-value键值对，并返回value
 V put(K key, V value);

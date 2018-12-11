@@ -57,7 +57,7 @@ static final int MAXIMUM_CAPACITY = 1 << 30;
   * 容量最少是2，以避免在延迟构造后，为了下次使用而又立即调整大小。
   */
 static final int MIN_SEGMENT_TABLE_CAPACITY = 2;
-/** 允许的最大段数；可以是使用构造方法的蚕食指定。但必须是2的次幂，并且小于1＜<24。 */
+/** 允许的最大段数；可以是使用构造方法的参数指定。但必须是2的次幂，并且小于1 << 16。 */
 static final int MAX_SEGMENTS = 1 << 16; // 略微保守的段数
 /** 加锁失败时的重试次数 */
 static final int RETRIES_BEFORE_LOCK = 2;
