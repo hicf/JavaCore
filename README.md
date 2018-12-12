@@ -47,7 +47,7 @@
 * [Java多线程与并发框 （第 10 篇） 深入理解：CAS](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/multithreads/CompareAndSwap.md)
 * [Java多线程与并发框 （第 11 篇） 深入理解：并发包的基石 -- 队列同步器 AQS](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/multithreads/AbstractQueuedSynchronizer.md)
 * [Java多线程与并发框 （第 12 篇） 深入理解：并发辅助工具类（很好的玩的工具类）](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/multithreads/ConcurrentHelperUtil.md)
-* [Java多线程与并发框 （第 12 篇） 深入理解：线程池](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/multithreads/ThreadPool.md)
+* [Java多线程与并发框 （第 12 篇） 深入理解：线程池参数](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/multithreads/ThreadPool.md)
 * Java多线程与并发框 （第 14 篇） 深入理解：Fork/Join框架
 * [Java多线程与并发框 （第 15 篇） 深入理解：原子操作](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/multithreads/AtomicOperation.md)
 * [Java多线程与并发框 （第 16 篇） 深入理解：ThreadLocal](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/multithreads/ThreadLocal.md)
