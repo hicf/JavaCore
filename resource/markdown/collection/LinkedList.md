@@ -149,11 +149,11 @@ void linkBefore(E e, Node<E> succ) {
 
 #### 图解双向链表的添加模式：
 
-![链表添加元素前](http://pgq1yfr0p.bkt.clouddn.com/image/java/collection/LinkedList1.png)
+![链表添加元素前](https://i.loli.net/2018/12/13/5c11ddc17ae7d.png)
 
 **第一步：**通过 `Node<E> node(int index)` 获取 `succ 节点`（假设index为3）
 
-![使用node(index)方法获取succ节点](http://pgq1yfr0p.bkt.clouddn.com/image/java/collection/LinkedList2.png)
+![使用node(index)方法获取succ节点](https://i.loli.net/2018/12/13/5c11dde93ead8.png)
 
 **第二步：**链表添加元素
 
@@ -170,7 +170,7 @@ void linkBefore(E e, Node<E> succ) {
       pred.next = newNode; // 设置 pred节点（也就是2节点）的后继节点为新节点
 ```
 
-![链入元素](http://pgq1yfr0p.bkt.clouddn.com/image/java/collection/LinkedList4.png)
+![链入元素](https://i.loli.net/2018/12/13/5c11de21eb83f.png)
 
 
 
@@ -242,4 +242,4 @@ E unlink(Node<E> x) {
 
 此时就完成，删除操作要比添加操作更为简单。
 
-![图解删除LinkedList中的节点](http://pgq1yfr0p.bkt.clouddn.com/image/java/collection/LinkedList5.png)
+![图解删除LinkedList中的节点](https://i.loli.net/2018/12/13/5c11de4ecaad8.png)

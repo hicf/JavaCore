@@ -40,7 +40,7 @@ V replace(K key, V value);
 
 > `ConcurrentHashMap`是基于 **分段锁** 机制设计的，将一个大的Map分割成n个小的 **段segment**，对每段进行加锁，降低了容器加锁的粒子度，每段(segment)各自加锁，互不影响，当一个线程访问 Map 其中一段数据时，其他段的数据也能被线程正常访问。分段锁使用的锁是 `ReentrantLock` 可重入锁。
 
-![ConcurrentHashMap1.7v](http://pgq1yfr0p.bkt.clouddn.com/image/java/collection/segments.png)
+![ConcurrentHashMap1.7v](https://i.loli.net/2018/12/13/5c11bf67aeacf.png)
 
 #### :star2:重要的字段
 

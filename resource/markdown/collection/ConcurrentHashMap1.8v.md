@@ -48,7 +48,7 @@ default void forEach(BiConsumer<? super K, ? super V> action) {
 
 > `jdk 1.7` 的`ConcurrentHashMap`是基于 **分段锁** 机制设计的，将一个大的Map分割成n个小的 **段segment**，对每段进行加锁，降低了容器加锁的粒子度，每段(segment)各自加锁，互不影响，当一个线程访问 Map 其中一段数据时，其他段的数据也能被线程正常访问。分段锁使用的锁是 `ReentrantLock` 可重入锁。
 
-![ConcurrentHashMap1.7v](http://pgq1yfr0p.bkt.clouddn.com/image/java/collection/segments.png)
+![ConcurrentHashMap1.7v](https://i.loli.net/2018/12/13/5c11bf67aeacf.png)
 
 #### :star2:优化后的 jdk 1.8 的 ConcurrentHashMap 的数据结构
 
@@ -56,7 +56,7 @@ default void forEach(BiConsumer<? super K, ? super V> action) {
 >
 > 首先取消了 `分段锁` 的设计，而改用像 `jdk 1.8` 中 `HashMap` 那样的数据结构：**数组** + **链表** + **红黑树**（但依然保留着 **分段锁** 的这种设计思想）。
 >
-> 再次，在保证线程安全的问题了取消了 `ReentrantLock` 改用 `CAS` + `synchronized` 保证并发的安全。（当然ReentrantLock 的原理也是基于CAS的），在使用 `synchronized` 时并没有像 `Hashtable` 那样粗暴地锁住整个数组，而它是锁住单个节点。TODO
+> 再次，在保证线程安全的问题了取消了 `ReentrantLock` 改用 `CAS` + `synchronized` 保证并发的安全。（当然ReentrantLock 的原理也是基于CAS的），在使用 `synchronized` 时并没有像 `Hashtable` 那样粗暴地锁住整个数组，而它是锁住单个节点。
 
 ![jdk1.8 ConcurrentHashMap ]()
 
@@ -488,14 +488,6 @@ private final void addCount(long x, int check) {
     }
 }
 ```
-
-
-
-
-
-
-
-
 
 
 

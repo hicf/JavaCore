@@ -12,7 +12,7 @@
 >
 >上一节分析了 **哈希冲突** 和 解决哈希冲突的算法，**HashMap** 就是基于 **链表法** 来解决哈希冲突的。
 
-![](http://pgq1yfr0p.bkt.clouddn.com/image/java/collection/HashMap1.7v.png)
+![jdk1.7 HashMap图片](https://i.loli.net/2018/12/13/5c11b3dab0979.png)
 
 #### 重要属性（请记住这些常量和变量的含义，下面源码分析会用到）
 
@@ -207,7 +207,7 @@ void createEntry(int hash, K key, V value, int bucketIndex) {
 
 > 链表的时候讲要添加的元素项放到**桶顶**，那么先进的元素项位于链表的尾部，后进的元素项位于链表的头部。（这只是**本版本** `HashMap` 的实现方式）
 
-![HashMap解决哈希冲突](http://pgq1yfr0p.bkt.clouddn.com/image/java/collection/HashMap1.7AddEntry.png)
+![HashMap解决哈希冲突](https://i.loli.net/2018/12/13/5c11b46a0d68a.png)
 
 
 
@@ -287,11 +287,11 @@ void transfer(Entry[] newTable, boolean rehash) {
 
 | （指数形式）length | （十进制）length | （十进制）length - 1 |（二进制）length - 1|
 | ---------------- | ------------------ | -------------------- |--|
-| $$1^2$$| 2  | 1 | 1 |
-| $$2^2$$| 4  | 3 | 11 |
-| $$3^2$$| 8  | 7 | 111 |
-| $$4^2$$ | 16  | 15 | 1111 |
-| $$...^2$$| ...  | ... | ... |
+| [$$1^2$$](https://i.loli.net/2018/12/13/5c11b8a163aba.gif) | 2  | 1 | 1 |
+| [$$2^2$$](https://i.loli.net/2018/12/13/5c11b8e5ba8bf.gif) | 4  | 3 | 11 |
+| [$$3^2$$](https://i.loli.net/2018/12/13/5c11b90318c7a.gif) | 8  | 7 | 111 |
+| [$$4^2$$](https://i.loli.net/2018/12/13/5c11b92c4af9f.gif) | 16  | 15 | 1111 |
+| $$...^2$$ | ...  | ... | ... |
 
 > 这种情况下，`length - 1` 二进制的 **最右位** 永远是 `1`。这样 `0 & 1 = 0`，`1 & 1 = 1` 的结果既有 `0` 又有`1`。对于 **哈希槽** 的二进制最右位为 `1` （十进制的奇数）的位置就有可能被填充，而不至于浪费存储空间。
 >
