@@ -6,4 +6,4 @@
 
 
 
-![Collection集合框架图](https://i.loli.net/2018/12/13/5c11d296d7ebb.png)
+![Collection集合框架图](https://i.loli.net/2018/12/13/5c11e028daf32.png)
