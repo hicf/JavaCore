@@ -106,7 +106,7 @@
 
 ### 七、:closed_book::green_book::blue_book::notebook_with_decorative_cover::books:高性能 MySQL
 * [数据库 （第 01 篇）精讲：数据库的三大范式与五大约束](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/database/NormalformAndConstraint.md)
-* [数据库 （第 01 篇）精讲：事务的四大特性与四种隔离级别](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/database/ACIDAndIsolationLevel.md)
+* [数据库 （第 01 篇）精讲：事务的ACID四大特性与四种隔离级别](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/database/ACIDAndIsolationLevel.md)
 * [数据库 （第 01 篇）精讲： MySQL InnoDB 索引](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/database/InnoDB.md)
 * [数据库 （第 01 篇）精讲： MySQL锁机制](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/database/MySQLLock.md)
 * [数据库 （第 01 篇）精讲： 悲观锁与乐观锁](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/database/PessimisticlockAndOptimisticlock.md)
