@@ -1,3 +1,5 @@
+<h3 style="padding-bottom:6px; padding-left:20px; color:#ffffff; background-color:#E74C3C;">SpringBoot启动过程</h3>
+
 > 一个Application被注解为 `@SpringBootApplication`，通过 `main` 方法开始、SpringApplication.run(Object source, String... args)运行。
 >
 > 本文是基于 `SpringBoot 2.0.6.RELEASE` 进行解析
