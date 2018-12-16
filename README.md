@@ -119,7 +119,6 @@
 * [分布式系统 （第 01 篇） 精讲：CAP定理与BASE理论](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/distribution/CAPandBASE.md)
 * [分布式系统 （第 01 篇） 精讲：2PC协议和3PC协议](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/distribution/2PCand3PC.md)
 * 分布式系统 （第 01 篇） 精讲：TCC事务补偿机制（柔性事务方案）
-* 分布式系统 （第 01 篇） 精讲：拜占庭将军问题
 * 分布式系统 （第 01 篇） 精讲：Paxos算法（强一致性算法）
 * 分布式系统 （第 01 篇） 精讲：Chubby 与 Zookeeper
 * 分布式系统 （第 01 篇） 精讲：设计分布式锁
