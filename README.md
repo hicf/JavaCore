@@ -1,4 +1,4 @@
-![这里随便写文字](http://pgq1yfr0p.bkt.clouddn.com/image/logo/1001.jpg)
+![主图logo](https://i.loli.net/2018/12/16/5c15d4a435e63.jpg)
 
 > **Java核心知识库**:school_satchel:：包含集合框架、JVM机制、多线程、SSM框架、MySQL、分布式、微服务、高并发与高可用等。:bookmark:
 
@@ -29,7 +29,7 @@
 * [Java虚拟机 （第 03 篇） 深入理解：垃圾收集算法](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/jvm/GarbageCollectionAlgorithm.md)
 * [Java虚拟机 （第 04 篇） 深入理解：垃圾收集器](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/jvm/GarbageCollector.md)
 * [Java虚拟机 （第 05 篇） 深入理解：jvm内存分析命令](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/jvm/JVMMemoryAnalysisCommand.md)
-* [Java虚拟机 （第 08 篇） 深入理解：类文件结构](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/jvm/ClassFileStructure.md)
+* Java虚拟机 （第 08 篇） 深入理解：类文件结构
 * [Java虚拟机 （第 09 篇） 深入理解：类加载机制](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/jvm/Classloading.md)
 * Java虚拟机 （第 11 篇） 深入理解：打破双亲委派模型
 
