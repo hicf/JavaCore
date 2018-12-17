@@ -2,11 +2,39 @@
 
 > 一个Application被注解为 `@SpringBootApplication`，通过 `main` 方法开始、SpringApplication.run(Object source, String... args)运行。
 >
-> 本文是基于 `SpringBoot 2.0.6.RELEASE` 进行解析
+> 本文是基于 `SpringBoot 2.1.0.RELEASE` 进行解析
 
-#### Application初始化过程：
 
-不同于 `1.5.6` 版本的使用 `initialize(sources)` 初始化方法进行初始化资源，`2.0.6` 使用构造方法进行初始化资源。
+
+### 启动过程概要
+
+**一、初始化资源**
+
+通过 `SpringApplication(ResourceLoader resourceLoader, Class<?>... primarySources)` 构造方法初始化一些资源；
+
+2、将基础参数资源添加到 `LinkedHashSet<Class<?>>` ；
+
+3、分析Web应用的类型；
+
+4、通过SpringFactoriesLoader#loadFactoryNames()加载工厂名称，然后使用createSpringFactoriesInstances()创建工厂的实例对象的集合；
+
+5、设置监听器的集合；
+
+6、通过main()方法判断并获得出所在的Application类；
+
+**二、运行Spring应用，创建并刷新一个新的  `ApplicationContext`**
+
+初始化完了基本资源，调用 `org.springframework.boot.SpringApplication#run(String... args)` 然后运行该Spring 应用，创建并刷新一个新的  `ApplicationContext`；
+
+1、创建并启动一个任务秒表StopWatch（此秒表注意用于在概念验证期间验证性能）；
+
+2、配置 `headless属性的模式` ，
+
+
+
+### Application初始化过程：
+
+不同于 `1.5.6` 版本的使用 `initialize(sources)` 初始化方法进行初始化资源，`2.1.0` 使用构造方法进行初始化资源。
 
 ```java
 /**

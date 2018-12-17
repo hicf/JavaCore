@@ -56,7 +56,8 @@ private void ensureExplicitCapacity(int minCapacity) {
 private void grow(int minCapacity) {
     // overflow-conscious code
     int oldCapacity = elementData.length;
-    // ArrayList 的扩容是 1.5 倍 或 1.5 倍 - 1 
+    // ArrayList 的扩容是 1.5 倍 或 1.5 倍 - 1
+    // oldCapacity为偶数按1.5倍扩容，oldCapacity为奇数按1.5倍-1扩容
     int newCapacity = oldCapacity + (oldCapacity >> 1);
     if (newCapacity - minCapacity < 0)
         newCapacity = minCapacity;
