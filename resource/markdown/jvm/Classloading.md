@@ -55,11 +55,3 @@ Java的 **“动态性”** 表现在依赖运行期动态加载和动态链接�
 那么如何保证相同的Class类文件均有同一个类加载器加载，而且存在多样化的加载器呢？
 
 如上图所示，顶层的 **Bootstrap ClassLoader** 是启动类加载器，所有的类最终都是有它来加载，那么同一个的Class类文件无论加载多少次，仅在虚拟机存在一个类。其他类加载器直接或间接是启动类加载的器的子类。这是一个典型的树形数据结构，从树的每个节点向上遍历总能找到根节点。那么其他类加载器仅需要将类加载的工作向上委托，最终都会委托给启动类加载（根类加载器），这样的模型称为类加载的 **双亲委派模型** 。
-
-
-
-<h3 style="padding-bottom:6px; padding-left:20px; color:#ffffff; background-color:#E74C3C;">三、Tomcat类加载器</h3>
-
-
-
-<h3 style="padding-bottom:6px; padding-left:20px; color:#ffffff; background-color:#E74C3C;">四、OSGi：Java动态化模块化</h3>
