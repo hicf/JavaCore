@@ -25,27 +25,23 @@ EXPLAIN SELECT [字段...] FROM TABLE;
 
 **重要字段说明**：
 
-select_type：
+select_type：使用的SELECT查询类型，比如SIMPLE、PRIMARY、UNION、SUBQUERY等；
 
-table：关于哪张表的结果行；
+table：关于访问哪张表，如果是多表，则按访问的先后顺序排列；
 
-partitions：
-
-**type**：非常非常重要的指标，表示MySQL在表中找到行记录的方式，又称 **访问类型**。访问类型的性能指标从差到好依次是
+**type**：非常非常重要的指标，表示MySQL在表中找到行记录的方式，又称 **访问类型**。访问类型的性能指标从差到好依次是 system > const > eq_ref > ref > fulltext > ref_or_null > index_merge > unique_subquery > index_subquery > range > index > ALL，一般来说，得保证查询至少达到range级别，最好能达到ref，否则就可能会出现性能问题。；
 
 **possible_keys**：可能用到的索引，如果为 *NULL*，表示没有可能用到的索引；
 
 **key**：用到的索引，如果为 *NULL*，表示没有使用索引；
 
-key_len：
+**key_len**：按字节计算的索引长度，值越小，表示越快；
 
-ref：
+ref：关联关系中另一个表的列名称；
 
-rows：
+rows：查询数据返回的行数；
 
-filtered：
-
-Extra：
+Extra：与关联操作有关的信息。
 
 
 
