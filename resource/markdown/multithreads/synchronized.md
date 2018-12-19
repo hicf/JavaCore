@@ -27,11 +27,14 @@
 
 ##### 2.1、对象加锁：
 > 使用 **monitorenter** 和 **monitorexit** 指令分别获取控制权和释放控制权。
-> ![monitor](https://upload-images.jianshu.io/upload_images/11476758-633049c76385f4d1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-> ![获取锁与释放锁](https://upload-images.jianshu.io/upload_images/11476758-9d8c25afef7a8ea6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+![monitor](https://upload-images.jianshu.io/upload_images/11476758-633049c76385f4d1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 
 ##### 2.1、方法加锁：
-> 方法级的同步是隐式，**即无需通过字节码指令来控制的，它实现在方法调用和返回操作之中**。JVM可以从方法常量池中的方法表结构(method_info Structure) 中的 **ACC_SYNCHRONIZED** 访问标志区分一个方法是否同步方法。**当方法调用时，调用指令将会检查方法的 ACC_SYNCHRONIZED 访问标志是否被设置，如果设置了，执行线程将先持有monitor（虚拟机规范中用的是监视器一词）， 然后再执行方法，最后再方法完成(无论是正常完成还是非正常完成)时释放monitor**。在方法执行期间，执行线程持有了monitor，其他任何线程都无法再获得同一个monitor。如果一个同步方法执行期间抛 出了异常，并且在方法内部无法处理此异常，那这个同步方法所持有的monitor将在异常抛到同步方法之外时自动释放。下面我们看看字节码层面如何实现：
+> 方法级的同步是隐式，**即无需通过字节码指令来控制的，它实现在方法调用和返回操作之中**。JVM可以从方法常量池中的方法表结构(method_info Structure) 中的 **ACC_SYNCHRONIZED** 访问标志区分一个方法是否同步方法。**当方法调用时，调用指令将会检查方法的 ACC_SYNCHRONIZED 访问标志是否被设置，如果设置了，执行线程将先持有monitor（虚拟机规范中用的是监视器一词）， 然后再执行方法，最后再方法完成(无论是正常完成还是非正常完成)时释放monitor**。在方法执行期间，执行线程持有了monitor，其他任何线程都无法再获得同一个monitor。如果一个同步方法执行期间抛 出了异常，并且在方法内部无法处理此异常，那这个同步方法所持有的monitor将在异常抛到同步方法之外时自动释放。
+
+
 
 ---
 ####  四、JVM对synchronized的优化
@@ -53,6 +56,8 @@
 
 ##### 4.5、`★★★★★`锁消除
 > 消除锁是虚拟机另外一种锁的优化，这种优化更彻底，Java虚拟机在JIT编译时(可以简单理解为当某段代码即将第一次被执行时进行编译，又称即时编译)，通过对运行上下文的扫描，去除不可能存在共享资源竞争的锁，通过这种方式消除没有必要的锁，可以节省毫无意义的请求锁时间，如下StringBuffer的append是一个同步方法，但是在add方法中的StringBuffer属于一个局部变量，并且不会被其他线程所使用，因此StringBuffer不可能存在共享资源竞争的情景，JVM会自动将其锁消除。
+
+
 
 ---
 ####  五、synchronized关键点

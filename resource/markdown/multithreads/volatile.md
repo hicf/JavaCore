@@ -6,7 +6,7 @@
 > 把对 **volatile变量**的单个读/写，看成是使用 **同一个监视器锁** 对这些单个读/写操作做了 **同步**。
 > 原理：插入内存屏蔽指令，禁止一定条件下的重排序。
 * **volatile** 是轻量级的同步机制
-  ![Java内存模型](https://upload-images.jianshu.io/upload_images/11476758-e9dfc21dc22a3e1f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+  
 
 
 * 举例说明：
