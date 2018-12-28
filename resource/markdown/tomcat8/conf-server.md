@@ -16,6 +16,20 @@ Tomcat 服务器是一个免费的开放源代码的Web应用服务器，Servlet
 
 这个Web容器的代号（他称、小名）。
 
+#### Web是什么？
+
+Web（World Wide Web）即全球广域网，也称为万维网，它是一种基于超文本和HTTP的、全球性的、动态交互的、跨平台的分布式图形信息系统。是建立在Internet上的一种网络服务，为浏览者在Internet上查找和浏览信息提供了图形化的、易于访问的直观界面，其中的文档及超级链接将Internet上的信息节点组织成一个互为关联的网状结构。
+
+#### Web服务器是什么？
+
+Web服务器一般指网站服务器，是指驻留于[因特网](https://baike.baidu.com/item/%E5%9B%A0%E7%89%B9%E7%BD%91/114119)上某种类型计算机的程序，可以向浏览器等Web客户端提供文档，也可以放置网站文件，让全世界浏览；可以放置数据文件，让全世界下载。目前最主流的三个Web服务器是Apache、Nginx、IIS。
+
+
+
+#### Apache、Nginx、IIS、Jetty区别？
+
+
+
 
 
 ---
@@ -94,11 +108,77 @@ StandardContext是如何配置的，每次HTTP请求发生了什么，如何支�
 
 Tomcat使用它总能获得一个机会用户 clean-up，而无论用户怎么停止它（既适当的发送一个shutdown命令或者不适当的简单关闭控制台）。
 
+16、通过batch批处理文件和shell脚本对Tomcat进行启动和停止
+
+17、部署工具deployer
+
+deployer组件负责部署和安装web应用
+
+18、ContainerServlet 特殊接口
+
+能够让servlet访问Catalina的内部对象。通过Manager应用来部署应用程序。
+
+19、JMX以及Tomcat是如何为其内部对象创建MBeans 是得这些对象可管理的
+
+
+
+#### 第一章：一个简单的web服务器
+
+Web服务器也称谓超文本传输协议（HTTP）服务器，因为它是基于HTTP来进行客户端和服务端进行通信的。一个基于Java的Web服务器使用的两个重要的类：`java.net.Socket` 和 `java.net.ServerSocket` ，并通过HTTP消息通信。
+
+HTTP协议是基于请求（request）和响应（response）的协议。HTTP协议又是使用可靠的TCP来连接，默认80端口（HTTPS默认使用443端口）。
+
+**HTTP请求**
+
+一个http请求有三个部分：
+
+- 方法 / 统一资源标识符（URI） / 协议版本
+- 请求的头head
+- 请求的体body
+
+**HTTP响应**
+
+一个http响应有三个部分：
+
+- 方法 / 统一资源标识符（URI） / 协议版本
+- 响应的头head
+- 响应的体body
+
+
+
+**java.net.Socket 类**
+
+套字节是网络连接的端点。套字节使得每一个应用可以从网络中写入和读取数据。在网络端点的两个不同的计算上的两个应用可以通过连接发送和接受字节流。
+
+**Socket** 带表着客户端，**ServerSocket** 带表着服务端，服务器总是等待着客户端的连接。
+
+Socket -- 网络与机器流
+
+I/O流 -- 动态流动
+
+File本地 -- 静态与动态转换
+
+
+
+#### 第二章 ：一个简单的Servlet容器
+
+Servlet编程需要 `javax.servlet` 和 `javax.servlet.http` 这两个包中的接口来实现。
+
+`javax.servlet.ServletRequest` 接口封装着客户端的HTTP请求，`javax.servlet.ServletResponse` 封装了 servlet 响应。
+
+使用 `java.net.URLClassLoader` 类加载 servlet 。
+
+
+
+
+
 
 
 
 
 #### Tomcat的IO模型
+
+
 
 
 
