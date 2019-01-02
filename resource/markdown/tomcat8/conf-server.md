@@ -183,3 +183,146 @@ Servlet编程需要 `javax.servlet` 和 `javax.servlet.http` 这两个包中的�
 
 
 #### conf/server.xml配置
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 注意:“Server”本身并不是“Container”，
+	 因此在这个级别上您可能不会定义子组件，例如“Valves”。
+     文档在 /docs/config/server.html
+ -->
+<Server port="8005" shutdown="SHUTDOWN">
+  <Listener className="org.apache.catalina.startup.VersionLoggerListener" />
+  <!-- 安全监听器. 文档在 /docs/config/listeners.html
+  <Listener className="org.apache.catalina.security.SecurityListener" />
+  -->
+  <!-- （Apache Portable Runtime）APR 库加载器. 文档在 /docs/apr.html -->
+  <Listener className="org.apache.catalina.core.AprLifecycleListener" SSLEngine="on" />
+  <!-- 防止由于使用特定的 java/javax api 而导致的内存泄漏 -->
+  <Listener className="org.apache.catalina.core.JreMemoryLeakPreventionListener" />
+  <Listener className="org.apache.catalina.mbeans.GlobalResourcesLifecycleListener" />
+  <Listener className="org.apache.catalina.core.ThreadLocalLeakPreventionListener" />
+
+  <!-- 全局 JNDI 资源 （Java Naming and Directory Interface）
+       文档在 /docs/jndi-resources-howto.html
+  -->
+  <GlobalNamingResources>
+    <!-- 可编辑的用户数据库,也可以由UserDatabaseRealm用于对用户进行身份验证
+    -->
+    <Resource name="UserDatabase" auth="Container"
+              type="org.apache.catalina.UserDatabase"
+              description="User database that can be updated and saved"
+              factory="org.apache.catalina.users.MemoryUserDatabaseFactory"
+              pathname="conf/tomcat-users.xml" />
+  </GlobalNamingResources>
+
+  <!-- 一个“Service”是一个或多个“Collector”的集合，这些连接器共享一个“Container”。
+       文档在 /docs/config/service.html
+   -->
+  <Service name="Catalina">
+
+    <!-- 连接器可以使用共享的执行器，您可以定义一个或多个命名的线程池 -->
+    <!--
+    <Executor name="tomcatThreadPool" namePrefix="catalina-exec-"
+        maxThreads="150" minSpareThreads="4"/>
+    -->
+
+    <!-- “Connector”表示接收请求和返回响应的端点。 文档在 :
+         Java HTTP Connector: /docs/config/http.html
+         Java AJP  Connector: /docs/config/ajp.html
+         APR (HTTP/AJP) Connector: /docs/apr.html
+         在端口8080上定义一个非ssl /TLS HTTP/1.1连接器
+    -->
+    <Connector port="8080" protocol="HTTP/1.1"
+               connectionTimeout="20000"
+               redirectPort="8443" />
+    <!-- 使用共享线程池的“Connector” -->
+    <!--
+    <Connector executor="tomcatThreadPool"
+               port="8080" protocol="HTTP/1.1"
+               connectionTimeout="20000"
+               redirectPort="8443" />
+    -->
+    <!-- 在端口8443上定义SSL/TLS HTTP/1.1连接器
+		 这个连接器使用NIO实现。
+		 默认的SSLImplementation取决于APR/本地库
+		 和AprLifecycleListener的useOpenSSL属性的存在。
+		 无论选择何种SSLImplementation，都可以使用JSSE或OpenSSL样式配置。
+		 下面使用JSSE样式配置。
+    -->
+    <!--
+    <Connector port="8443" protocol="org.apache.coyote.http11.Http11NioProtocol"
+               maxThreads="150" SSLEnabled="true">
+        <SSLHostConfig>
+            <Certificate certificateKeystoreFile="conf/localhost-rsa.jks"
+                         type="RSA" />
+        </SSLHostConfig>
+    </Connector>
+    -->
+    <!-- 使用HTTP/2在端口8443上定义SSL/TLS HTTP/1.1连接器，
+		 该连接器使用APR/native实现，该实现总是为TLS使用OpenSSL。
+		 可以使用JSSE或OpenSSL风格的配置。下面将使用OpenSSL样式配置。
+    -->
+    <!--
+    <Connector port="8443" protocol="org.apache.coyote.http11.Http11AprProtocol"
+               maxThreads="150" SSLEnabled="true" >
+        <UpgradeProtocol className="org.apache.coyote.http2.Http2Protocol" />
+        <SSLHostConfig>
+            <Certificate certificateKeyFile="conf/localhost-rsa-key.pem"
+                         certificateFile="conf/localhost-rsa-cert.pem"
+                         certificateChainFile="conf/localhost-rsa-chain.pem"
+                         type="RSA" />
+        </SSLHostConfig>
+    </Connector>
+    -->
+
+    <!-- 在端口8009上定义一个AJP 1.3连接器 -->
+    <Connector port="8009" protocol="AJP/1.3" redirectPort="8443" />
+
+
+    <!-- 引擎表示处理每个请求的入口点(在Catalina中)。
+		 Tomcat的引擎实现单独分析请求中包含的HTTP头，
+		 并将它们传递到适当的主机(虚拟主机)。
+         文档位于 /docs/config/engine.html -->
+
+    <!-- 您应该将jvmRoute设置为通过AJP ie支持负载平衡 :
+    <Engine name="Catalina" defaultHost="localhost" jvmRoute="jvm1">
+    -->
+    <Engine name="Catalina" defaultHost="localhost">
+
+      <!-- 关于Tomcat集群，请参阅以下文件:
+          /docs/cluster-howto.html  (使用简介)
+          /docs/config/cluster.html (参考文档) -->
+      <!--
+      <Cluster className="org.apache.catalina.ha.tcp.SimpleTcpCluster"/>
+      -->
+
+      <!-- 使用 LockOutRealm 防止通过暴力攻击猜测用户密码 -->
+      <Realm className="org.apache.catalina.realm.LockOutRealm">
+        <!-- 这个Realm使用在键“UserDatabase”下的全局JNDI资源中配置的用户数据库。
+			 RealmA可以立即使用针对此UserDatabase执行的任何编辑。 -->
+        <Realm className="org.apache.catalina.realm.UserDatabaseRealm"
+               resourceName="UserDatabase"/>
+      </Realm>
+
+      <Host name="localhost"  appBase="webapps"
+            unpackWARs="true" autoDeploy="true">
+
+        <!-- SingleSignOn valve，在web应用程序之间共享身份验证
+             文档位于: /docs/config/valve.html -->
+        <!--
+        <Valve className="org.apache.catalina.authenticator.SingleSignOn" />
+        -->
+
+        <!-- 访问日志处理的所有例子。
+             文档位于: /docs/config/valve.html
+             注意:使用的模式等价于使用 pattern="common" -->
+        <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs"
+               prefix="localhost_access_log" suffix=".txt"
+               pattern="%h %l %u %t &quot;%r&quot; %s %b" />
+
+      </Host>
+    </Engine>
+  </Service>
+</Server>
+```
+
