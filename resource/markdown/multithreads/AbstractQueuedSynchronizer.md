@@ -84,7 +84,7 @@ public abstract class AbstractOwnableSynchronizer
 > * java.util.concurrent.locks.AbstractQueuedSynchronizer.**setState(int newState)**
 > * java.util.concurrent.locks.AbstractQueuedSynchronizer.**compareAndSetState(int expect, int update)**
 * **2.1、源码分析：**
-```
+```java
 /**
  * 返回同步状态的当前值。
  * 此操作具有易失性 volatile 读取的内存语义。
@@ -121,7 +121,7 @@ protected final boolean compareAndSetState(int expect, int update) {
 
 * **2.2、FIFO 队列** （类似双向链表）
 > 同步器的开始提到了其实现依赖于一个 **FIFO 队列**，那么队列中的 **元素节点Node** 就是保存着 **线程引用** 和 **线程状态** 的 **容器**，**每个线程对同步器的访问，都可以看做是队列中的一个节点Node**。Node的主要包含以下成员变量：
-```
+```java
 static final class Node {
     /** 作为标记表示节点正在 共享模式 中等待 */
     static final Node SHARED = new Node();
