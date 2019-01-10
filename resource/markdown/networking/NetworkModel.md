@@ -10,7 +10,7 @@
 >
 > 七层模型的划分如下：
 
-![ISO的OSI七层网络模型]()
+![ISO的OSI七层网络模型](https://i.loli.net/2019/01/10/5c3753e50b452.png)
 
 #### 7、应用层
 
@@ -74,7 +74,7 @@
 
 > OSI七层网络模型 过于繁杂，而应用更为广泛的网络模型是 TCP/IP四层的参考模型，它们都很相似。
 
-![ TCP/IP四层参考模型]()
+![ TCP/IP四层参考模型](https://i.loli.net/2019/01/10/5c37573d0cc07.png)
 
 #### 4、应用层
 
@@ -99,3 +99,5 @@
 <h3 style="padding-bottom:6px; padding-left:20px; color:#ffffff; background-color:#E74C3C;">三、五层网络模型</h3>
 
 >  还有少数资料将网络协议划分为五层：应用层、传输层、网络层、数据链路层、物理层。
+
+![五层因特网协议栈](https://i.loli.net/2019/01/10/5c375848ea8f7.png)

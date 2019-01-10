@@ -4,7 +4,7 @@
 
 <h3 style="padding-bottom:6px; padding-left:20px; color:#ffffff; background-color:#E74C3C;">一、3次握手过程</h3>
 
-![三次握手]()
+![TCP三次握手](https://i.loli.net/2019/01/10/5c3768734d0d2.png)
 
 #### 第一次握手
 
@@ -32,7 +32,7 @@
 
 <h3 style="padding-bottom:6px; padding-left:20px; color:#ffffff; background-color:#E74C3C;">二、4次挥手过程</h3>
 
-![三次挥手]()
+![TCP四次挥手](https://i.loli.net/2019/01/10/5c376853c0109.png)
 
 #### 第一次挥手
 
