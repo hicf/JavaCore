@@ -42,7 +42,7 @@
 * [Java多线程与并发框 （第 05 篇） 深入理解：顺序一致性模型](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/multithreads/SequentialConsistencyModel.md)
 * [Java多线程与并发框 （第 06 篇） 深入理解：synchronized 关键字](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/multithreads/synchronized.md)
 * [Java多线程与并发框 （第 07 篇） 深入理解：volatile 关键字](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/multithreads/volatile.md)
-* [Java多线程与并发框 （第 08 篇） 深入理解：Java各种锁与无锁](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/multithreads/.md)
+* [Java多线程与并发框 （第 08 篇） 深入理解：Java各种锁与无锁](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/multithreads/LockAndLock-free.md)
 * [Java多线程与并发框 （第 09 篇） 深入理解：CAS](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/multithreads/CompareAndSwap.md)
 * [Java多线程与并发框 （第 10 篇） 深入理解：并发包的基石 -- 队列同步器 AQS](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/multithreads/AbstractQueuedSynchronizer.md)
 * [Java多线程与并发框 （第 11 篇） 深入理解：并发辅助工具类（很好的玩的工具类）](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/multithreads/ConcurrentHelperUtil.md)
@@ -59,7 +59,7 @@
 * [网络协议 （第 04 篇） 精讲：TCP和UPD的区别与对比](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/networking/TCPAndUDP.md)
 * [网络协议 （第 05 篇） 精讲：TCP三次握手与四次挥手](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/networking/TCPConnectAndDisconnect.md)
 * [网络协议 （第 06 篇） 精讲：滑动窗口协议](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/networking/SlidingWindowProtocol.md)
-* [网络协议 （第 07 篇） 精讲：一位用户从浏览器地址框输入url、按下回车键后，经历了什么](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/networking/RequestAndResponse.md)
+* 网络协议 （第 07 篇） 精讲：一位用户从浏览器地址框输入url、按下回车键后，经历了什么]
 * 网络协议 （第 08 篇） 精讲：加密
 * [网络协议 （第 09 篇） 精讲：IP地址的分类](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/networking/IPAddressClassification.md)
 * [网络协议 （第 10 篇） 精讲：常见HTTP状态码及含义](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/networking/StateCode.md)
@@ -109,25 +109,25 @@
 * [数据库 （第 02 篇）精讲：事务的ACID四大特性与四种隔离级别](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/database/ACIDAndIsolationLevel.md)
 * [数据库 （第 03 篇）精讲： MySQL InnoDB 索引](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/database/InnoDB.md)
 * [数据库 （第 04 篇）精讲： MySQL锁机制](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/database/MySQLLock.md)
-* [数据库 （第 05 篇）精讲： 悲观锁与乐观锁](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/database/PessimisticlockAndOptimisticlock.md)
-* [数据库 （第 06 篇）精讲： SQL优化](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/database/SQLOptimization.md)
-* [数据库 （第 07 篇）精讲： 数据库拆分](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/database/DBSplit.md)
+* [数据库 （第 05 篇）精讲： SQL优化](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/database/SQLOptimization.md)
+* [数据库 （第 06 篇）精讲： 数据库拆分](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/database/DBSplit.md)
 
 
 ### 八、:telescope::tokyo_tower::satellite:分布式系统
 * [分布式系统 （第 01 篇） 精讲：集群与分布式](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/distribution/WhatisDistributed.md)
 * [分布式系统 （第 02 篇） 精讲：CAP定理与BASE理论](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/distribution/CAPandBASE.md)
-* [分布式系统 （第 03 篇） 精讲：2PC协议和3PC协议](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/distribution/2PCand3PC.md)
-* 分布式系统 （第 04 篇） 精讲：TCC事务补偿机制（柔性事务方案）
-* 分布式系统 （第 05 篇） 精讲：Paxos算法（强一致性算法）
-* 分布式系统 （第 06 篇） 精讲：Chubby 与 Zookeeper
-* 分布式系统 （第 07 篇） 精讲：设计分布式锁
-* 分布式系统 （第 08 篇） 精讲：分布式session/token一致性设计
-* 分布式系统 （第 09 篇） 精讲：分布式事务
-* 分布式系统 （第 10 篇） 精讲：分布式缓存
-* 分布式系统 （第 11 篇） 精讲：分布式高并发的支持与控制
-* 分布式系统 （第 12 篇） 精讲：分布式下悲观锁和乐观锁的实现
-* 分布式系统 （第 13 篇） 精讲：分布式支付框架的实现
+* [分布式系统 （第 03 篇） 精讲：XA事务](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/distribution/XA.md)
+* [分布式系统 （第 04 篇） 精讲：2PC协议和3PC协议](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/distribution/2PCand3PC.md)
+* 分布式系统 （第 05 篇） 精讲：TCC事务补偿机制（柔性事务方案）
+* 分布式系统 （第 06 篇） 精讲：Paxos算法（强一致性算法）
+* 分布式系统 （第 07 篇） 精讲：Chubby 与 Zookeeper
+* 分布式系统 （第 08 篇） 精讲：设计分布式锁
+* 分布式系统 （第 09 篇） 精讲：分布式session/token一致性设计
+* 分布式系统 （第 10 篇） 精讲：分布式事务
+* 分布式系统 （第 11 篇） 精讲：分布式缓存
+* 分布式系统 （第 12 篇） 精讲：分布式高并发的支持与控制
+* 分布式系统 （第 13 篇） 精讲：分布式下悲观锁和乐观锁的实现
+* 分布式系统 （第 14 篇） 精讲：分布式支付框架的实现
 
 
 ### 九、:microscope::microscope::microscope:微服务
