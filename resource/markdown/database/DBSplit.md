@@ -1,14 +1,42 @@
 <h3 style="padding-bottom:6px; padding-left:20px; color:#ffffff; background-color:#E74C3C;">数据库拆分</h3>
 
+![database](https://i.loli.net/2019/01/14/5c3c8c06cd185.jpeg)
 
-
-<h3 style="padding-bottom:6px; padding-left:20px; color:#ffffff; background-color:#E74C3C;">水平拆分</h3>
+数据库承载的数据以及请求负载较高时，我们就要考虑使用读写分离、数据缓存。随着业务的增长，数据库的压力达到了承载的阈值，就要考虑分库分表，分解、分摊单个数据库的压力。
 
 
 
 <h3 style="padding-bottom:6px; padding-left:20px; color:#ffffff; background-color:#E74C3C;">垂直拆分</h3>
 
+**数据库的垂直拆分：**通常，我们将所有的数据按照不同的业务建立并存储不同的表(table)，垂直拆分是按照业务将一个数据库拆分多个数据库。原来每个业务对应一张表，垂直拆分后，是一个业务对应一个数据库（当然也有坑可能是多个业务对应一个数据库）。其核心是专库专用。达到的结果是将原来一个数据库系统的压力按照业务均摊到各个拆分后的数据库中。垂直拆分也是比较推荐的一直拆分方式。
+
+垂直分片往往需要对架构和设计进行调整。在当前微服务化的进程中，对数据库的垂直拆分是非常友好的。
 
 
-<h3 style="padding-bottom:6px; padding-left:20px; color:#ffffff; background-color:#E74C3C;">混合拆分</h3>
+
+**数据表的垂直拆分：**单表的数据达到2GB或500万行记录就要考虑拆分数据表，垂直拆分表就将热点列和不经常使用的列表拆分开，降低单表的大小。
+
+
+
+<h3 style="padding-bottom:6px; padding-left:20px; color:#ffffff; background-color:#E74C3C;">水平拆分</h3>
+
+当一般垂直拆分遇到瓶颈时，会对数据表进行水平拆分。这种方式与垂直拆分不同的地方是，它不会更改表结构。水平分表是将一个表的拆分多结构相同的多个表；水平分库是将一个表拆分成多个结构相同的表，并且这些表分布在不同的数据库。
+
+
+
+#### 分布分表中间件有两种：
+
+1、代理模式的分库分表中间件：MyCat；
+
+2、客户端模式的分库分表中间件：ShardingJDBC；
+
+3、支持事务的分布式数据库。
+
+（当然ShardingProxy也是代理分库分表中间件）
+
+
+
+#### 总结：
+
+结合着微服务体系，一般会进行垂直拆分。当微服务中的数据库出现压力时，然后进行水平拆分。
 
