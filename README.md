@@ -116,7 +116,7 @@
 ### 八、:telescope::tokyo_tower::satellite:分布式系统
 * [分布式系统 （第 01 篇） 精讲：集群与分布式](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/distribution/WhatisDistributed.md)
 * [分布式系统 （第 02 篇） 精讲：CAP定理与BASE理论](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/distribution/CAPandBASE.md)
-* [分布式系统 （第 03 篇） 精讲：XA事务](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/distribution/XA.md)
+* [分布式系统 （第 03 篇） 精讲：X/Open DTP 与 XA 事务](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/distribution/XA.md)
 * [分布式系统 （第 04 篇） 精讲：2PC协议和3PC协议](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/distribution/2PCand3PC.md)
 * 分布式系统 （第 05 篇） 精讲：TCC事务补偿机制（柔性事务方案）
 * 分布式系统 （第 06 篇） 精讲：Paxos算法（强一致性算法）
