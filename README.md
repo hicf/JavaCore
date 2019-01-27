@@ -112,8 +112,22 @@
 * [数据库 （第 05 篇）精讲： SQL优化](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/database/SQLOptimization.md)
 * [数据库 （第 06 篇）精讲： 数据库拆分](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/database/DBSplit.md)
 
+### 八、:sunny::umbrella::zap:Redis 核心应用
 
-### 八、:telescope::tokyo_tower::satellite:分布式系统
+- Redis（第01篇）核心：丰富的数据类型
+- Redis（第01篇）核心：读写分离与主从复制
+- Redis（第01篇）核心：Sentinel 哨兵
+- Redis（第01篇）核心：集群
+- Redis（第01篇）核心：事务
+- Redis（第01篇）核心：持久化--RDB与AOF
+- Redis（第01篇）核心：缓存更新
+- Redis（第01篇）核心：布隆过滤
+- Redis（第01篇）核心：缓存击穿
+- Redis（第01篇）核心：缓存雪崩
+- Redis（第01篇）核心：热点key
+
+### 九、:telescope::tokyo_tower::satellite:分布式系统
+
 * [分布式系统 （第 01 篇） 精讲：集群与分布式](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/distribution/WhatisDistributed.md)
 * [分布式系统 （第 02 篇） 精讲：CAP定理与BASE理论](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/distribution/CAPandBASE.md)
 * [分布式系统 （第 03 篇） 精讲：X/Open DTP 与 XA 事务](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/distribution/XA.md)
@@ -130,7 +144,7 @@
 * 分布式系统 （第 14 篇） 精讲：分布式支付框架的实现
 
 
-### 九、:microscope::microscope::microscope:微服务
+### 十、:microscope::microscope::microscope:微服务
 * 微服务 （第 01 篇） 精讲：什么是微服务？
 * 微服务 （第 01 篇） 精讲：服务建模
 * 微服务 （第 01 篇） 精讲：服务拆分
@@ -142,7 +156,7 @@
 * 微服务 （第 01 篇） 精讲：SpringCloud
 
 
-### 十、:bicyclist::horse_racing::snowboarder:高并发与高可用
+### 十一、:bicyclist::horse_racing::snowboarder:高并发与高可用
 * 高并发与高可用 （第 01 篇） 精讲：全局id生成算法
 * 高并发与高可用 （第 01 篇） 精讲：如何实现请求幂等性
 * 高并发与高可用 （第 01 篇） 精讲：如何防止网络抖动产生的重复建单
