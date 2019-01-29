@@ -114,16 +114,18 @@
 
 ### 八、:sunny::umbrella::zap:Redis 核心应用
 
-- Redis（第01篇）核心：丰富的数据类型
+- Redis（第01篇）核心：Redis单线程模型为啥这么快？
+
 - Redis（第01篇）核心：读写分离与主从复制
 - Redis（第01篇）核心：Sentinel 哨兵
-- Redis（第01篇）核心：集群
+- Redis（第01篇）核心：集群与分布式
 - Redis（第01篇）核心：事务
 - Redis（第01篇）核心：持久化--RDB与AOF
 - Redis（第01篇）核心：缓存更新
 - Redis（第01篇）核心：布隆过滤
-- Redis（第01篇）核心：缓存击穿
+- Redis（第01篇）核心：缓存击穿(缓存穿透)
 - Redis（第01篇）核心：缓存雪崩
+- Redis（第01篇）核心：缓存降级
 - Redis（第01篇）核心：热点key
 
 ### 九、:telescope::tokyo_tower::satellite:分布式系统
