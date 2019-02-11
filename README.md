@@ -114,9 +114,9 @@
 
 ### 八、:sunny::umbrella::zap:Redis 核心应用
 
-- Redis（第01篇）核心：Redis单线程模型为啥这么快？
+- [Redis（第01篇）核心：Redis单线程模型为啥这么快？](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/cache/SingleThreadModel.md)
 
-- Redis（第01篇）核心：读写分离与主从复制
+- [Redis（第01篇）核心：主从复制](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/cache/Replication.md)
 - Redis（第01篇）核心：Sentinel 哨兵
 - Redis（第01篇）核心：集群与分布式
 - Redis（第01篇）核心：事务
