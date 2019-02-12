@@ -115,18 +115,17 @@
 ### 八、:sunny::umbrella::zap:Redis 核心应用
 
 - [Redis（第01篇）核心：Redis单线程模型为啥这么快？](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/cache/SingleThreadModel.md)
-
-- [Redis（第01篇）核心：主从复制](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/cache/Replication.md)
-- Redis（第01篇）核心：Sentinel 哨兵
-- Redis（第01篇）核心：集群与分布式
-- Redis（第01篇）核心：事务
-- Redis（第01篇）核心：持久化--RDB与AOF
-- Redis（第01篇）核心：缓存更新
-- Redis（第01篇）核心：布隆过滤
-- Redis（第01篇）核心：缓存击穿(缓存穿透)
-- Redis（第01篇）核心：缓存雪崩
-- Redis（第01篇）核心：缓存降级
-- Redis（第01篇）核心：热点key
+- [Redis（第02篇）核心：主从复制](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/cache/Replication.md)
+- Redis（第03篇）核心：Sentinel 哨兵
+- Redis（第04篇）核心：集群与分布式
+- Redis（第05篇）核心：事务
+- [Redis（第06篇）核心：持久化--RDB与AOF](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/cache/Persistence.md)
+- Redis（第07篇）核心：缓存更新
+- Redis（第08篇）核心：布隆过滤
+- Redis（第09篇）核心：缓存击穿(缓存穿透)
+- Redis（第10篇）核心：缓存雪崩
+- Redis（第11篇）核心：缓存降级
+- Redis（第12篇）核心：热点key
 
 ### 九、:telescope::tokyo_tower::satellite:分布式系统
 
