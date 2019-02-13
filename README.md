@@ -113,13 +113,12 @@
 * [数据库 （第 06 篇）精讲： 数据库拆分](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/database/DBSplit.md)
 
 ### 八、:sunny::umbrella::zap:Redis 核心应用
-
 - [Redis（第01篇）核心：Redis单线程模型为啥这么快？](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/cache/SingleThreadModel.md)
 - [Redis（第02篇）核心：主从复制](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/cache/Replication.md)
-- Redis（第03篇）核心：Sentinel 哨兵
 - Redis（第04篇）核心：集群与分布式
+- Redis（第03篇）核心：高可用 Sentinel 哨兵
 - Redis（第05篇）核心：事务
-- [Redis（第06篇）核心：持久化--RDB与AOF](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/cache/Persistence.md)
+- [Redis（第06篇）核心：持久化之RDB与AOF](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/cache/Persistence.md)
 - Redis（第07篇）核心：缓存更新
 - Redis（第08篇）核心：布隆过滤
 - Redis（第09篇）核心：缓存击穿(缓存穿透)
