@@ -113,18 +113,18 @@
 * [数据库 （第 06 篇）精讲： 数据库拆分](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/database/DBSplit.md)
 
 ### 八、:sunny::umbrella::zap:Redis 核心应用
-- [Redis（第01篇）核心：Redis单线程模型为啥这么快？](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/cache/SingleThreadModel.md)
-- [Redis（第02篇）核心：主从复制](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/cache/Replication.md)
-- Redis（第04篇）核心：集群与分布式
-- Redis（第03篇）核心：高可用 Sentinel 哨兵
-- Redis（第05篇）核心：事务
-- [Redis（第06篇）核心：持久化之RDB与AOF](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/cache/Persistence.md)
-- Redis（第07篇）核心：缓存更新
-- Redis（第08篇）核心：布隆过滤
-- Redis（第09篇）核心：缓存击穿(缓存穿透)
+- Redis（第01篇）核心：数据结构与底层数据结构
+- [Redis（第02篇）核心：Redis单线程模型为啥这么快？](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/cache/SingleThreadModel.md)
+- [Redis（第03篇）核心：持久化之RDB与AOF](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/cache/Persistence.md)
+- [Redis（第04篇）核心：主从复制与故障转移](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/cache/Replication.md)
+- Redis（第05篇）核心：高可用与 Sentinel 哨兵
+- Redis（第06篇）核心：一致性哈希算法
+- Redis（第07篇）核心：分布式缓存与 Redis Cluster
+- Redis（第08篇）核心：缓存倾斜与热点key
+- Redis（第09篇）核心：缓存击穿（缓存穿透）
 - Redis（第10篇）核心：缓存雪崩
-- Redis（第11篇）核心：缓存降级
-- Redis（第12篇）核心：热点key
+- Redis（第11篇）核心：布隆过滤
+- Redis（第12篇）核心：缓存降级
 
 ### 九、:telescope::tokyo_tower::satellite:分布式系统
 
@@ -138,10 +138,9 @@
 * 分布式系统 （第 08 篇） 精讲：设计分布式锁
 * 分布式系统 （第 09 篇） 精讲：分布式session/token一致性设计
 * 分布式系统 （第 10 篇） 精讲：分布式事务
-* 分布式系统 （第 11 篇） 精讲：分布式缓存
-* 分布式系统 （第 12 篇） 精讲：分布式高并发的支持与控制
-* 分布式系统 （第 13 篇） 精讲：分布式下悲观锁和乐观锁的实现
-* 分布式系统 （第 14 篇） 精讲：分布式支付框架的实现
+* 分布式系统 （第 11 篇） 精讲：分布式高并发的支持与控制
+* 分布式系统 （第 12 篇） 精讲：分布式下悲观锁和乐观锁的实现
+* 分布式系统 （第 13 篇） 精讲：分布式支付框架的实现
 
 
 ### 十、:microscope::microscope::microscope:微服务
@@ -162,7 +161,7 @@
 * 高并发与高可用 （第 01 篇） 精讲：如何防止网络抖动产生的重复建单
 * 高并发与高可用 （第 01 篇） 精讲：如何度过服务器重启后的连接风暴
 * 高并发与高可用 （第 01 篇） 精讲：数据持久化 + ACK + 补偿重试+请求幂等性+防重设计
-* 高并发与高可用 （第 01 篇） 精讲： 抢红包系统实现
+* 高并发与高可用 （第 01 篇） 精讲： 抢红包系统实现（高并发系统三把利刃：缓存、限流、降级）
 
 ### :soon:未完，待续  ...
 
