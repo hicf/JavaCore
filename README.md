@@ -134,7 +134,7 @@
 * [分布式系统 （第 05 篇） 精讲：TCC事务补偿机制（柔性事务方案）](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/distribution/TryConfirmCancel.md)
 * 分布式系统 （第 06 篇） 精讲：Paxos算法（强一致性算法）
 * 分布式系统 （第 07 篇） 精讲：Chubby 与 Zookeeper
-* 分布式系统 （第 08 篇） 精讲：一致性哈希算法
+* [分布式系统 （第 08 篇） 精讲：一致性哈希算法](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/distribution/ConsistentHashing.md)
 * 分布式系统 （第 09 篇） 精讲：设计分布式锁
 * 分布式系统 （第 10 篇） 精讲：分布式session/token一致性设计
 * 分布式系统 （第 11 篇） 精讲：分布式事务
