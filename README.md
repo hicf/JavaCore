@@ -130,15 +130,17 @@
 * [分布式系统 （第 03 篇） 精讲：X/Open DTP 与 XA 事务](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/distribution/XA.md)
 * [分布式系统 （第 04 篇） 精讲：2PC协议和3PC协议](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/distribution/2PCand3PC.md)
 * [分布式系统 （第 05 篇） 精讲：TCC事务补偿机制（柔性事务方案）](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/distribution/TryConfirmCancel.md)
-* 分布式系统 （第 06 篇） 精讲：Paxos算法（强一致性算法）
-* 分布式系统 （第 07 篇） 精讲：Chubby 与 Zookeeper
-* [分布式系统 （第 08 篇） 精讲：一致性哈希算法](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/distribution/ConsistentHashing.md)
-* [分布式系统 （第 09 篇） 精讲：设计分布式锁](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/distribution/DistributedLock.md)
-* 分布式系统 （第 10 篇） 精讲：分布式session/token一致性设计
-* 分布式系统 （第 11 篇） 精讲：分布式事务
-* 分布式系统 （第 12 篇） 精讲：分布式高并发的支持与控制
-* 分布式系统 （第 13 篇） 精讲：分布式下悲观锁和乐观锁的实现
-* 分布式系统 （第 14 篇） 精讲：分布式支付框架的实现
+* 分布式系统 （第 06 篇） 精讲：Paxos 协议（强一致性协议）
+* 分布式系统 （第 07 篇） 精讲：ZAB 协议
+* 分布式系统 （第 08 篇） 精讲：Raft 协议
+* 分布式系统 （第 09 篇） 精讲：Chubby 与 Zookeeper
+* [分布式系统 （第 10 篇） 精讲：一致性哈希算法](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/distribution/ConsistentHashing.md)
+* [分布式系统 （第 11 篇） 精讲：设计分布式锁](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/distribution/DistributedLock.md)
+* 分布式系统 （第 12 篇） 精讲：分布式session/token一致性设计
+* 分布式系统 （第 13 篇） 精讲：分布式事务
+* 分布式系统 （第 14 篇） 精讲：分布式高并发的支持与控制
+* 分布式系统 （第 15 篇） 精讲：分布式下悲观锁和乐观锁的实现
+* 分布式系统 （第 16 篇） 精讲：分布式支付框架的实现
 
 
 ### 十、:microscope::microscope::microscope:微服务
