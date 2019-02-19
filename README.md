@@ -118,12 +118,10 @@
 - [Redis（第03篇）核心：持久化之RDB与AOF](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/cache/Persistence.md)
 - [Redis（第04篇）核心：主从复制与故障转移](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/cache/Replication.md)
 - Redis（第05篇）核心：高可用与 Sentinel 哨兵
-- Redis（第07篇）核心：分布式缓存与 Redis Cluster
-- Redis（第08篇）核心：缓存倾斜与热点key
-- Redis（第09篇）核心：缓存击穿（缓存穿透）
-- Redis（第10篇）核心：缓存雪崩
-- Redis（第11篇）核心：布隆过滤
-- Redis（第12篇）核心：缓存降级
+- Redis（第06篇）核心：分布式缓存与 Redis Cluster
+- [Redis（第07篇）核心：缓存击穿（缓存穿透）、缓存雪崩](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/cache/CachePenetration.md)
+- [Redis（第08篇）核心：热点key](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/cache/HotKey.md)
+- Redis（第09篇）核心：布隆过滤
 
 ### 九、:telescope::tokyo_tower::satellite:分布式系统
 
@@ -135,7 +133,7 @@
 * 分布式系统 （第 06 篇） 精讲：Paxos算法（强一致性算法）
 * 分布式系统 （第 07 篇） 精讲：Chubby 与 Zookeeper
 * [分布式系统 （第 08 篇） 精讲：一致性哈希算法](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/distribution/ConsistentHashing.md)
-* 分布式系统 （第 09 篇） 精讲：设计分布式锁
+* [分布式系统 （第 09 篇） 精讲：设计分布式锁](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/distribution/DistributedLock.md)
 * 分布式系统 （第 10 篇） 精讲：分布式session/token一致性设计
 * 分布式系统 （第 11 篇） 精讲：分布式事务
 * 分布式系统 （第 12 篇） 精讲：分布式高并发的支持与控制
