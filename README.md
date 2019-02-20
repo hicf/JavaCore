@@ -7,7 +7,7 @@
 ### 一、:bullettrain_side::railway_car::railway_car::railway_car:集合框架源码分析
 * [集合框架 （第 01 篇） 源码分析：Collection<E> 框架总览](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/collection/JavaCollections.md)
 * [集合框架 （第 02 篇） 源码分析：Map<K,V > 框架总览](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/collection/JavaMaps.md)
-* [集合框架 （第 03 篇） 源码分析：ArrayList](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/collection/ArrayList.md)
+* [集合框架 （第 03 篇） 源码分析：ArrayList<E>](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/collection/ArrayList.md)
 * [集合框架 （第 04 篇） 源码分析：LinkedList](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/collection/LinkedList.md)
 * [集合框架 （第 05 篇） 源码分析：Map<K, V>接口与其内部接口Entry<K,V>](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/collection/Map.Entry1.7v.md)
 * [集合框架 （第 06 篇） 源码分析：哈希冲突(哈希碰撞)与解决算法](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/collection/HashConflictsAndResolve.md)
@@ -138,26 +138,29 @@
 * [分布式系统 （第 11 篇） 精讲：设计分布式锁](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/distribution/DistributedLock.md)
 * 分布式系统 （第 12 篇） 精讲：分布式session/token一致性设计
 * 分布式系统 （第 13 篇） 精讲：分布式事务
-* 分布式系统 （第 14 篇） 精讲：分布式高并发的支持与控制
-* 分布式系统 （第 15 篇） 精讲：分布式下悲观锁和乐观锁的实现
+* 分布式系统 （第 14 篇） 精讲：分布式任务调度
+* 分布式系统 （第 15 篇） 精讲：分布式高并发的支持与控制
 * 分布式系统 （第 16 篇） 精讲：分布式支付框架的实现
 
 
 ### 十、:microscope::microscope::microscope:微服务
-* 微服务 （第 01 篇） 精讲：什么是微服务？
-* 微服务 （第 01 篇） 精讲：服务建模
-* 微服务 （第 01 篇） 精讲：服务拆分
-* 微服务 （第 01 篇） 精讲：微服务的核心 -- 服务治理（服务注册与发现中心）
-* 微服务 （第 01 篇） 精讲：网关Gateway
-* 微服务 （第 01 篇） 精讲：路由Routing
-* 微服务 （第 01 篇） 精讲：负载均衡算法
-* 微服务 （第 01 篇） 精讲：服务熔断、服务隔离、服务限流、服务降级、快速失败
-* 微服务 （第 01 篇） 精讲：SpringCloud
+* 微服务 （第 01 篇） 精讲：微服务与SOA
+* 微服务 （第 02 篇） 精讲：服务建模
+* 微服务 （第 03 篇） 精讲：服务拆分
+* 微服务 （第 04 篇） 精讲：微服务的核心 -- 服务治理（服务注册与发现中心）
+* 微服务 （第 05 篇） 精讲：服务网关Gateway
+* 微服务 （第 05 篇） 精讲：配置中心
+* 微服务 （第 06 篇） 精讲：路由Routing
+* 微服务 （第 07 篇） 精讲：负载均衡算法
+* 微服务 （第 08 篇） 精讲：服务限流、服务隔离、服务熔断、服务降级、快速失败
+* 微服务 （第 09 篇） 精讲：容器化
+* 微服务 （第 10 篇） 精讲：SpringCloud
 
 
 ### 十一、:bicyclist::horse_racing::snowboarder:高并发与高可用
 * 高并发与高可用 （第 01 篇） 精讲：全局id生成算法
 * 高并发与高可用 （第 01 篇） 精讲：如何实现请求幂等性
+* 高并发与高可用 （第 01 篇） 精讲：常见的负载均衡算法
 * 高并发与高可用 （第 01 篇） 精讲：如何防止网络抖动产生的重复建单
 * 高并发与高可用 （第 01 篇） 精讲：如何度过服务器重启后的连接风暴
 * 高并发与高可用 （第 01 篇） 精讲：数据持久化 + ACK + 补偿重试+请求幂等性+防重设计

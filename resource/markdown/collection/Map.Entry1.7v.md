@@ -2,7 +2,7 @@
 
 <h3 style="padding-bottom:6px; padding-left:20px; color:#ffffff; background-color:#E74C3C;">一、Map接口</h3>
 
-> **Map接口**是整个 **Key-Value** 存储容器的核心。它 **抽**(qú)(xíng)**象** 定义了 **Key-Value** 结构的容器框架。**Map**不会像 **数组** 中元素那样可以单独存放，到像似 `LinkedList` 中的节点自定义，那么特殊的节点一定需要特定的来描述。在 `jdk1.7` 及其之前的版本，Map的作者将其节点描述为 **Entry** ，Entry不是 ~~入口~~、~~大门~~，它在这里称为 **项目** 或 **条目** ，下文简称为 **项**。**Map** 中的每个节点称为 `一项`。
+> **Map接口**是整个 **Key-Value** 存储容器的核心。它 **抽**(qǔ)(xíng)**象** 定义了 **Key-Value** 结构的容器框架。**Map**不会像 **数组** 中元素那样可以单独存放，到像似 `LinkedList` 中的节点自定义，那么特殊的节点一定需要特殊的定义来描述。在 `jdk1.7` 及其之前的版本，Map的作者将其节点描述为 **Entry** ，Entry不是 ~~入口~~、~~大门~~，它在这里称为 **项目** 或 **条目** ，下文简称为 **项**。**Map** 中的每个节点称为 `一项`。
 
 <h3 style="padding-bottom:6px; padding-left:20px; color:#ffffff; background-color:#E74C3C;">二、Map.Entry</h3>
 
@@ -27,7 +27,7 @@ int hashCode()
 
 <h3 style="padding-bottom:6px; padding-left:20px; color:#ffffff; background-color:#E74C3C;">三、Map中的方法</h3>
 
-> **方法** 意味着 行为。下面Map的方法意味着整个Map框架具有最基本的什么样的 **功能**。明白这些方法，就掌握了Map框架核心操作功能。
+> **方法** 意味着 行为。下面Map的方法意味着整个Map框架具有最基本的、什么样的 **功能**。明白这些方法，就掌握了Map框架核心操作功能。
 
 ```java
 // 返回 map 中键值对的数量

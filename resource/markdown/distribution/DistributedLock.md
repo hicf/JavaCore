@@ -56,7 +56,7 @@ WHERE t0.id = 1001 AND t0.node_number != 2;
 **释放锁:**
 
 ```mysql
-DELETE FROM distribution_lock WHERE id = 1001;
+DELETE FROM distribution_lock WHERE id = 1001 AND t0.node_number = 1;
 ```
 
 
@@ -84,20 +84,28 @@ DELETE FROM distribution_lock WHERE id = 1001;
 **获取锁**
 
 ```shell
-127.0.0.1:6379> SETNX lock:1001 192.168.2.104
+127.0.0.1:6379> SETNX lock:1001 uuid
 ```
 
-巧用 `SETNX` 命令，其中 `value` 设置唯一标识，比如 `ip+线程id+时间戳` 、 `UUID`诸如此类，如果返回 `1` 表示获取锁成功，否则获取锁失败；
+巧用 `SETNX` 命令，其中 `value` 为唯一标识，比如 `ip+线程id+时间戳` 、 `UUID`诸如此类，如果返回 `1` 表示获取锁成功，否则获取锁失败；
 
 
 
 **设置锁超时时间**
 
 ```shell
-127.0.0.1:6379> expire lock:1001 30
+127.0.0.1:6379> expire lock:1001 5
 ```
 
 如果返回 `1` 表示设置锁超时成功，否则失败；
+
+
+
+##### 获取将直接使用以下命令代替上面两条命令:
+
+```shell
+127.0.0.1:6379> SET lock:1001 uuid EX 5 NX
+```
 
 
 
@@ -107,25 +115,54 @@ DELETE FROM distribution_lock WHERE id = 1001;
 127.0.0.1:6379> GET lock:1001
 ```
 
-如果获得的 `value` 和之前设置的 `value` 说明锁有效，提交事务；否则锁过期，业务回滚；
+如果获得的 `value` 和之前设置的 `value` 一致，说明锁有效，业务提交；否则锁过期，业务回滚；
 
 
 
-**释放锁**
-
-```shell
-127.0.0.1:6379> DEL lock:1001
-```
-
-
-
-注意: 防止误删 `key` ，使用以下伪代码演示:
+**释放锁** Redis的事务不像MySQL的事务那样强大，所以释放锁时要防止误删 `key` ，使用Lua脚本来操作:
 
 ```java
+/**
+ * 释放分布式锁
+ *
+ * @param key   key
+ * @param value value
+ * @return 主动成功释放锁返回 true，否则返回false
+ */
+public boolean release(String key, String value) {
+    // Null check
+    Assert.notNull(key, "The key is not allowed to be null");
+    Assert.notNull(value, "The value is not allowed to be null");
 
+    // result 表示是否删除指定的 key，1表示是，0表示否
+    long result = 0;
+
+    try {
+        String lua = "if redis.call(\"get\",KEYS[1]) == ARGV[1] then \n" +
+                "   return redis.call(\"del\",KEYS[1])\n" +
+                " else \n" +
+                "   return 0\n" +
+                " end";
+
+        result = (Long) jedis.evalsha(jedis.scriptLoad(lua),
+                    Collections.singletonList(key),
+                    Collections.singletonList(value));
+
+    } catch (Exception e) {
+        e.printStackTrace();
+    } finally {
+        if (jedis != null) {
+            try {
+                jedis.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    return result == 1;
+}
 ```
-
-
 
 
 
@@ -135,9 +172,13 @@ DELETE FROM distribution_lock WHERE id = 1001;
 
 **获取锁**
 
-
+// TODO
 
 
 
 **释放锁**
+
+
+
+// TODO
 

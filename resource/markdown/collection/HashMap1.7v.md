@@ -2,7 +2,7 @@
 
 <h3 style="padding-bottom:6px; padding-left:20px; color:#ffffff; background-color:#E74C3C;">一、继承关系</h3>
 
-![HashMap1.7vExtend](http://pgq1yfr0p.bkt.clouddn.com/image/java/collectionHashMap1.7vExtend.png)
+![HashMap1.7vExtend](https://i.loli.net/2019/02/20/5c6d2069aef34.png)
 
 <h3 style="padding-bottom:6px; padding-left:20px; color:#ffffff; background-color:#E74C3C;">二、数据结构</h3>
 

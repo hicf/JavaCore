@@ -88,7 +88,7 @@ void linkLast(E e) {
 }
 ```
 
-添加元素到头部，操作于此类似。
+添加元素到头部，操作与此类似。
 
 :star::star::star::star::star:
 <h4 style="padding-bottom:6px; color:#E74C3C;">重点：添加元素到指定index位置</h4>

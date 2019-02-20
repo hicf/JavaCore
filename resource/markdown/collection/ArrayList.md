@@ -7,7 +7,7 @@
 ***
 <h3 style="padding-bottom:6px; padding-left:20px; color:#ffffff; background-color:#E74C3C;">一、ArrayList</h3>
 
-> ArrayList是动态数组，其动态性体现在能够`动态扩容、缩容`。（其原理是构建一个新Object数组，将原数组复制进去。借助 `Arrays.copyOf(T[] original, int newLength)）` 。
+> ArrayList是动态数组，其动态性体现在能够`动态扩容` 、`动态缩容`。（其原理是构建一个新Object数组，将原数组复制进去。借助 `Arrays.copyOf(T[] original, int newLength)）` 。
 
 > ![ArrayList继承关系](https://i.loli.net/2018/12/09/5c0cbffb79b69.png)
 
@@ -73,6 +73,7 @@ private void grow(int minCapacity) {
 #### 1.2、在指定位子添加方法 public void `add(int index, E element)`
 
 ```java
+// 注意：在指定 index 位置添加元素，并不会覆盖该处的元素，而是 index位置及其之后的元素后移
 public void add(int index, E element) {
     // 只要有index，必定会检查range
     rangeCheckForAdd(index);
@@ -127,7 +128,17 @@ private void fastRemove(int index) {
 }
 ```
 
+:bomb::bomb::bomb:注意:
+
+1. 如果存在多个对象o,仅仅删除距离 index = 0 处最近的一个元素;
+2. 元素被删除后，该位置不会空出来，后面的元素会前移。
+
+所以 `ArrayList` 适合读多删少场景。
+
+
+
 #### 3、重新设置指定index位置的元素值 public E `set(int index, E element)`
+
 ```java
 public E set(int index, E element) {
     // 有index，必检查
