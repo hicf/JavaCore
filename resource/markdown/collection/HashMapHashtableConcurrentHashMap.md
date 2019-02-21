@@ -11,7 +11,7 @@
 
 
 
-<h3 style="padding-bottom:6px; padding-left:20px; color:#ffffff; background-color:#E74C3C;">一、线程安全的Hashtable</h3>
+<h3 style="padding-bottom:6px; padding-left:20px; color:#ffffff; background-color:#E74C3C;">二、线程安全的Hashtable</h3>
 
 > `Hashtable` 是`HashMap` 线程安全的实现。它也起始于 **上古时期**，可追溯到` jdk1.0`。（:no_good:注意是 `Hashtable` 而非 ~~HashTable~~）
 
@@ -35,7 +35,7 @@ public class Hashtable<K,V>
 
 :suspension_railway::suspension_railway::suspension_railway:
 
-<h3 style="padding-bottom:6px; padding-left:20px; color:#ffffff; background-color:#E74C3C;">一、线程安全的ConcurrentHashMap</h3>
+<h3 style="padding-bottom:6px; padding-left:20px; color:#ffffff; background-color:#E74C3C;">三、线程安全的ConcurrentHashMap</h3>
 
 > 面对着 `Hashtable` 粗暴的大锁:lock:，`ConcurrentHashMap` 采用 **分段锁技术**，将一个大的Map分割成n个小的 **段segment**，对每段进行加锁，降低了容器加锁的粒子度，每段(segment)各自加锁，互不影响。分段锁使用的锁是 `ReentrantLock` 可重入锁。
 >
