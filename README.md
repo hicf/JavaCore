@@ -24,6 +24,7 @@
 * 集合框架 （第 17 篇） 源码分析：CopyOnWriteArrayList 与 CopyOnWriteArraySet
 
 
+
 ### 二、:radio::radio::radio:JVM（Java虚拟机）
 * [Java虚拟机 （第 01 篇） 深入理解：JVM内存区域（运行时数据区）](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/jvm/RuntimeDataAreas.md)
 * [Java虚拟机 （第 03 篇） 深入理解：垃圾收集算法](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/jvm/GarbageCollectionAlgorithm.md)
@@ -32,6 +33,7 @@
 * Java虚拟机 （第 06 篇） 深入理解：类文件结构
 * [Java虚拟机 （第 07 篇） 深入理解：类加载机制](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/jvm/Classloading.md)
 * Java虚拟机 （第 08 篇） 深入理解：打破双亲委派模型
+
 
 
 ### 三、:closed_lock_with_key:Java多线程与并发框架:unlock:   
@@ -52,6 +54,7 @@
 * Java多线程与并发框 （第 15 篇） 深入理解：ThreadLocal
 
 
+
 ### 四、:satellite::satellite::satellite:网络协议:globe_with_meridians::globe_with_meridians::globe_with_meridians:
 * [网络协议 （第 01 篇） 精讲：ISO的OSI七层参考模型与TCP/IP四层参考模型](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/networking/NetworkModel.md)
 * [网络协议 （第 02 篇） 精讲：HTTP/1.1、HTTP/2.0、HTTPS的区别](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/networking/HTTP1.1HTTP2.0HTTPS.md)
@@ -63,6 +66,7 @@
 * 网络协议 （第 08 篇） 精讲：加密
 * [网络协议 （第 09 篇） 精讲：IP地址的分类](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/networking/IPAddressClassification.md)
 * [网络协议 （第 10 篇） 精讲：常见HTTP状态码及含义](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/networking/StateCode.md)
+
 
 
 ### 五、:leaves::four_leaf_clover::fountain:Spring 5.x 核心篇
@@ -92,6 +96,7 @@
 * [Spring 5.x （第 24 篇） 核心篇：SpringBoot 2.x 启动过程](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/spring/SpringBootStart-upProcedure.md)
 
 
+
 ### 六、:bird::bird::bird:MyBatis3 源码分析
 * MyBatis3 （第 01 篇）源码分析：SqlSession
 * MyBatis3 （第 02 篇）源码分析：SqlSessionFactory
@@ -110,6 +115,7 @@
 * MyBatis3 （第 14 篇）源码分析：一级缓存和二级缓存
 
 
+
 ### 七、:closed_book::green_book::blue_book::notebook_with_decorative_cover::books:高性能 MySQL
 * [数据库 （第 01 篇）精讲：数据库的三大范式与五大约束](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/database/NormalformAndConstraint.md)
 * [数据库 （第 02 篇）精讲：事务的ACID四大特性与四种隔离级别](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/database/ACIDAndIsolationLevel.md)
@@ -118,19 +124,23 @@
 * [数据库 （第 05 篇）精讲： SQL优化](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/database/SQLOptimization.md)
 * [数据库 （第 06 篇）精讲： 数据库拆分](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/database/DBSplit.md)
 
+
+
 ### 八、:sunny::umbrella::zap:Redis 核心应用
-- Redis（第01篇）核心：数据结构与底层数据结构
-- [Redis（第02篇）核心：Redis单线程模型为啥这么快？](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/cache/SingleThreadModel.md)
-- [Redis（第03篇）核心：持久化之RDB与AOF](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/cache/Persistence.md)
-- [Redis（第04篇）核心：主从复制与故障转移](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/cache/Replication.md)
-- Redis（第05篇）核心：高可用与 Sentinel 哨兵
-- Redis（第06篇）核心：分布式缓存与 Redis Cluster
-- [Redis（第07篇）核心：缓存击穿（缓存穿透）、缓存雪崩](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/cache/CachePenetration.md)
-- [Redis（第08篇）核心：热点key](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/cache/HotKey.md)
-- Redis（第09篇）核心：布隆过滤
+- Redis（第 01 篇）核心：数据结构与底层数据结构
+- [Redis（第 02 篇）核心：Redis单线程模型为啥这么快？](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/cache/SingleThreadModel.md)
+- [Redis（第 03 篇）核心：持久化之RDB与AOF](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/cache/Persistence.md)
+- [Redis（第 04 篇）核心：主从复制与故障转移](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/cache/Replication.md)
+- Redis（第 05 篇）核心：高可用与 Sentinel 哨兵
+- Redis（第 06 篇）核心：分布式缓存与 Redis Cluster
+- [Redis（第 07 篇）核心：缓存击穿（缓存穿透）、缓存雪崩](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/cache/CachePenetration.md)
+- [Redis（第 08 篇）核心：热点key](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/cache/HotKey.md)
+- Redis（第 09 篇）核心：布隆过滤
+- Redis（第 10 篇）核心：缓存数据一致性
+
+
 
 ### 九、:telescope::tokyo_tower::satellite:分布式系统
-
 * [分布式系统 （第 01 篇） 精讲：集群与分布式](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/distribution/WhatisDistributed.md)
 * [分布式系统 （第 02 篇） 精讲：CAP定理与BASE理论](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/distribution/CAPandBASE.md)
 * [分布式系统 （第 03 篇） 精讲：X/Open DTP 与 XA 事务](https://github.com/about-cloud/JavaCore/blob/master/resource/markdown/distribution/XA.md)
@@ -149,6 +159,7 @@
 * 分布式系统 （第 16 篇） 精讲：分布式支付框架的实现
 
 
+
 ### 十、:microscope::microscope::microscope:微服务
 * 微服务 （第 01 篇） 精讲：微服务与SOA
 * 微服务 （第 02 篇） 精讲：服务建模
@@ -163,6 +174,7 @@
 * 微服务 （第 10 篇） 精讲：SpringCloud
 
 
+
 ### 十一、:bicyclist::horse_racing::snowboarder:高并发与高可用
 * 高并发与高可用 （第 01 篇） 精讲：全局id生成算法
 * 高并发与高可用 （第 01 篇） 精讲：如何实现请求幂等性
@@ -171,6 +183,8 @@
 * 高并发与高可用 （第 01 篇） 精讲：如何度过服务器重启后的连接风暴
 * 高并发与高可用 （第 01 篇） 精讲：数据持久化 + ACK + 补偿重试+请求幂等性+防重设计
 * 高并发与高可用 （第 01 篇） 精讲： 抢红包系统实现（高并发系统三把利刃：缓存、限流、降级）
+
+
 
 ### :soon:未完，待续  ...
 
