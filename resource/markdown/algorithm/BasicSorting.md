@@ -1,10 +1,10 @@
-### 常见基础排序算法
+### 2常见基础排序算法
 
 
 
 #### 排序算法分类
 
-![排序算法分类](https://i.loli.net/2019/06/10/5cfe3bf15a32392750.png)
+![排序算法分类](http://ww2.sinaimg.cn/large/006y8mN6ly1g68uopou69j30ko0dzwgb.jpg)
 
 
 #### 时间复杂度
@@ -38,18 +38,23 @@ O(1) < O(logn) < O(n) < O(nlogn) < O(n^2) < O(2^n) < O(n^3) < O(n^n)
 
 ```java
 public void bubbleSort(int[] array) {
-    int temp;
-    // 外层移动基准元素索引
-    for (int i = 0; i < array.length - 1; i++) {
-        // 内层对基准元素与之后的每个做比较，冒泡排序
-        for (int j = i + 1; j < array.length; j++) {
-            // 大的值，向上冒泡
-            if ((temp = array[i]) > array[j]) {
-                array[i] = array[j];
-                array[j] = temp;
-            }
-        }
-    }
+	if (array == null) {
+		return;
+	}
+
+	int temp;
+    // 冒泡次数
+	for (int i = array.length - 1; i > 0; i--) {
+        // 冒泡排序
+		for (int j = 0; j < i; j++) {
+            // 将大值交换到后面
+			if (array[j] > array[j + 1]) {
+				temp = array[j];
+				array[j] = array[j + 1];
+				array[j + 1] = temp;
+			}
+		} 
+	}
 }
 ```
 
@@ -57,32 +62,49 @@ public void bubbleSort(int[] array) {
 
 ##### 2. 快速排序 ★★★★★
 
+基本思想：通过一趟排序将要排序的数据分割成独立的两部分，其中一部分的所有数据都比另外一部分的所有数据都要小，然后再按此方法对这两部分数据分别进行快速排序，整个排序过程可以递归进行，以此达到整个数据变成有序序列。
+
 ```java
 public void quickSort(int[] array, int left, int right) {
+    if (array == null) {
+        return;
+    }
+    
     if (left < right) {
         int i = left;
         int j = right;
-        int temp = array[i];
+        int temp = array[i]; // 选取一端值为基准值
         
         while (i < j) {
+            // 如果 j 处值大于等于基准值，那么不用交换数据，直接将 j 向前移动，
+            // 直到 i 等于 j 或者 j 处值比基准值小
             while (i < j && array[j] >= temp) {
                 j--;
             }
+            // 如果 i < j，说明 j 处值比基准值小(根据上面循环判断)
             if (i < j) {
+                // 交换 j 与 i 处的值，并将 i 向后移动
                 array[i++] = array[j];
             }
             
+            
+            // 如果 i 处值小于等于基准值，那么将i向后移动就可以了
             while (i < j && array[i] <= temp) {
                 i++;
             }
+            // 如果 i < j，说明 i 处值比基准值大(根据上面循环判断)
             if (i < j) {
+                // 交换 i 与 j 处的值，并将 i 向前移动
                 array[j--] = array[i];
             }
             
+            // 最后将临时基准值填充到 i 处
             array[i] = temp;
-            quickSort(array, left, i - 1);
-            quickSort(array, i + 1, right);
+            // 对两段各自快速排序
         }
+        
+        quickSort(array, left, i - 1);
+        quickSort(array, i + 1, right);
     }
 }
 ```
@@ -93,12 +115,18 @@ public void quickSort(int[] array, int left, int right) {
 
 ```java
 public void insertionSort(int[] array) {
+    if (array == null) {
+        return;
+    }
+    // 和冒泡排序有些类似，这里是遍历趟数
     for (int i = 0; i < array.length; i++) {
-        int temp = array[i];
+        // 精髓是从局部有序，到整体有序
+        int temp = array[i]; // 当前基准元素
         int j;
         for (j = i; j > 0 && array[j - 1] > temp; j--) {
-            array[j] = array[j - 1];
+            array[j] = array[j - 1]; // 下一个元素比基准元素大，下一个元素向后移动
         }
+        // 最后比较当前元素和基准元素大小
         if (array[j] > temp) {
             array[j] = temp;
         }
@@ -108,19 +136,22 @@ public void insertionSort(int[] array) {
 
 
 
-##### 4. 希尔排序 ★★★☆☆
+##### 4. 希尔排序（缩写增量-直接插入排序） ★★★☆☆
 
 ```java
 public void shellSort(int[] array) {
-    // 增量
+    if (array == null) {
+        return;
+    }
+    // 计算增量
     for (int d = array.length / 2; d > 0; d /= 2) {
         // 分组
-        for (int x = 0; x < d; x++) {
-            // 直接插入排序(第 x 组的第2个元素起步)
-            for (int i = x + d; i < array.length; i += d) {
+        for (int g = 0; g < d; g++) {
+            // 插入排序(第 x 组的第 d 个增量元素起步)(直接插入排序的增量是 1，这里是 d，需注意下)
+            for (int i = g + d; i < array.length; i += d) {
                 int temp = array[i];
-                int j = i;
-                for (; j > d && array[j - d] > temp; j -= d) {
+                int j;
+                for (j = i; j > d && array[j - d] > temp; j -= d) {
                     array[j] = array[j - d];
                 }
                 if (array[j] > temp) {
@@ -138,19 +169,26 @@ public void shellSort(int[] array) {
 
 ```java
 public void selectionSort(int[] array) {
-    int minIndex;
+    if (array == null) {
+        return;
+    }
+    
+    int index;
     int temp;
-    for (int i = 0; i < array.length - 1; i++) {
-        minIndex = i;
-        for (int j = i + 1; j < array.length; j ++) {
-            if (array[minIndex] > array[j]) {
-                minIndex = j;
+    // 做出的选择次数
+    for (int i = array.length - 1; i > 0; i--) {
+        index = 0;
+        for (int j = 1; j < i; j++) {
+            // 选择一个最大的值(记录索引)
+            if (array[j] > array[index]) {
+                index = j;
             }
         }
-        if (minIndex > i) {
-            temp = array[i];
-            array[i] = array[minIndex];
-            array[minIndex] = temp;
+        // 将选出的最大值换到一端
+        if (array[index] > array[i]) {
+            temp = array[index];
+            array[index] = array[i];
+            array[i] = temp;
         }
     }
 }
@@ -162,31 +200,43 @@ public void selectionSort(int[] array) {
 
 ```java
 public void heapSort(int[] array) {
+    if (array == null) {
+        return;
+    }
+    
 	for (int i = array.length / 2 - 1; i >= 0; i--) {
+        // 先调整堆(选择一个最大值放到堆顶)
 		adjustHeap(array, i, array.length);
 	}
 
 	for (int i = array.length - 1; i > 0; i--) {
+        // 将堆顶的元素与其他元素比较并交换
 		swap(array, 0, i);
+        // 再调整堆
 		adjustHeap(array, 0, i);
 	}
 }
 
-private void adjustHeap(int[] array, int i, int length) {
-	int temp = array[i];
+// 调整堆，使得堆顶元素值大于等于其子节点值
+private void adjustHeap(int[] array, int top, int length) {
+	int temp = array[top];
 
-	for (int j = i * 2 + 1; j < length; j = j * 2 + 1) {
-		if (j + 1 < length && array[j + 1] > array[j]) {
-			j++;
+	for (int i = top * 2 + 1; i < length; i = i * 2 + 1) {
+        // （如果存在的化）从左右子节点找出值最大的子节点
+		if (i + 1 < length && array[i + 1] > array[i]) {
+			i++;
 		}
-		if (array[j] > temp) {
-			array[i] = array[j];
-			i = j;
+		if (array[i] > temp) {
+			array[top] = array[i];
+			top = i;
 		} else {
 			break;
 		}
 	}
-	array[i] = temp;
+    
+    if (array[top] > temp) {
+    	array[top] = temp;   
+    }
 }
 
 private void swap(int[] array, int a, int b) {
@@ -202,6 +252,10 @@ private void swap(int[] array, int a, int b) {
 
 ```java
 public void mergeSort(int[] array) {
+    if (array == null) {
+        return;
+    }
+    
     int[] aux = new int[array.length];
     sort(array, 0, array.length - 1, aux);
 }
@@ -209,6 +263,7 @@ public void mergeSort(int[] array) {
 private void sort(int[] array, int left, int right,int[] aux) {
 	if (left < right) {
         int mid = (left + right) / 2;
+        // 先分后合
         sort(array, left , mid, aux);
         sort(array, mid + 1, right, aux);
         merge(array, left, mid, right, aux);
@@ -216,10 +271,11 @@ private void sort(int[] array, int left, int right,int[] aux) {
 }
 
 private void merge(int[] array, int left, int mid, int right, int[] aux){
+    int t = 0;
     int l = left;
     int m = mid + 1;
-    int t = 0;
     
+    // 判断元素值大小，按大小排序到辅助数组上
     while (l <= mid && m <= right) {
         if (array[l] <= array[m]) {
             aux[t++] = array[l++];
@@ -228,7 +284,7 @@ private void merge(int[] array, int left, int mid, int right, int[] aux){
         }
     }
     
-    // 填充剩余元素
+    // 把剩余元素填充到辅助数组上
     while (l <= mid) {
         aux[t++] = array[l++];
     }
@@ -236,6 +292,7 @@ private void merge(int[] array, int left, int mid, int right, int[] aux){
         aux[t++] = array[m++];
     }
     
+    // 将辅助线数组上的元素复制到需要排序的数组上
     t = 0;
     while (left <= right) {
         array[left++] = aux[t++];
